@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion 30
@@ -12,7 +14,6 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -22,6 +23,36 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    flavorDimensions "server"
+    productFlavors.all {
+        buildConfigField "String", "OAUTH_KEY", "\"748720108405-jjb33blnf43o1qv1oiuiumma137bslk3.apps.googleusercontent.com\""
+        buildConfigField "String", "GOOGLE_API_KEY", "\"AIzaSyBM5cyc2abeRYrMPWCQbILZDNMFG-s-i54\""
+    }
+
+    productFlavors {
+        local {
+            dimension "server"
+            manifestPlaceholders = [appName: "DEV GidAssistant"]
+            resValue "string", "appName", "GidAssistant DEV"
+            buildConfigField "String", "SERVER_BASE_URL", "\"http://10.0.0.2:8080\""
+        }
+        remote {
+            dimension "server"
+            manifestPlaceholders = [appName: "GidAssistant"]
+            resValue "string", "appName", "GidAssistant"
+            buildConfigField "String", "SERVER_BASE_URL", "\"http://10.0.0.2:8080\""
+        }
+    }
 }
 
 dependencies {
@@ -29,9 +60,50 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+    def fragment_ktx = "1.2.5"
+    implementation "androidx.fragment:fragment-ktx:$fragment_ktx"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+
+    def material_version = "1.3.0-alpha03"
+    implementation "com.google.android.material:material:$material_version"
+
+    def room = "2.2.5"
+    implementation "androidx.room:room-runtime:$room"
+    implementation "androidx.room:room-ktx:$room"
+    kapt "androidx.room:room-compiler:$room"
+
+    def retrofit = "2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+
+    def kotlin_coroutines = "1.3.9"
+    //noinspection GradleDependency
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines"
+
+    def hilt_version = "2.28-alpha"
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+
+    def hilt_viewmodels = "1.0.0-alpha02"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_viewmodels"
+    kapt "androidx.hilt:hilt-compiler:$hilt_viewmodels"
+
+    def cardview_version = "1.0.0"
+    implementation "androidx.cardview:cardview:$cardview_version"
+
+    def glide = "4.11.0"
+    implementation "com.github.bumptech.glide:glide:$glide"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide"
+
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
+}
+
+kapt {
+    correctErrorTypes true
 }

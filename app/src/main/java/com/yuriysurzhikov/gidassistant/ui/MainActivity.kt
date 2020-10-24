@@ -1,7 +1,8 @@
-package com.yuriysurzhikov.gidassistant
+package com.yuriysurzhikov.gidassistant.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.yuriysurzhikov.gidassistant.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
