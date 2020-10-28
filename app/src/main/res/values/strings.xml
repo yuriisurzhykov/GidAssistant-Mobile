@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">GidAssistant-Mobile</string>
+    <string name="routes">Routes</string>
+    <string name="best_routes">Best for me</string>
+    <string name="account">My account</string>
+    <string name="interests_fragment">Interests</string>
 </resources>

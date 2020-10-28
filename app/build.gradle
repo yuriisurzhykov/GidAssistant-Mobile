@@ -50,7 +50,7 @@ android {
             dimension "server"
             manifestPlaceholders = [appName: "GidAssistant"]
             resValue "string", "appName", "GidAssistant"
-            buildConfigField "String", "SERVER_BASE_URL", "\"http://10.0.0.2:8080\""
+            buildConfigField "String", "SERVER_BASE_URL", "\"https://gidassistant.herokuapp.com/\""
         }
     }
 }

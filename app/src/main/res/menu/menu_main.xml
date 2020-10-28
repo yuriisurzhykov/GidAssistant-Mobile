@@ -3,14 +3,14 @@
 
     <group android:id="@+id/main">
         <item
-            android:id="@+id/routes_menu_item"
-            android:title="@string/routes"/>
+                android:id="@+id/routes_menu_item"
+                android:title="@string/routes"/>
         <item
-            android:id="@+id/best_routes_menu_item"
-            android:title="@string/best_routes"/>
+                android:id="@+id/best_routes_menu_item"
+                android:title="@string/best_routes"/>
         <item
-            android:id="@+id/account_menu_item"
-            android:title="@string/account"/>
+                android:id="@+id/account_menu_item"
+                android:title="@string/account"/>
     </group>
 
 </menu>

@@ -1,4 +1,4 @@
 package com.yuriysurzhikov.gidassistant.repository
 
-class AndroidBaseRepository: IBaseRepository {
+class AndroidBaseRepository : IBaseRepository {
 }
