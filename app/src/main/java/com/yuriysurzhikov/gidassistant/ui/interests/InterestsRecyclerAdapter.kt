@@ -6,22 +6,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.yuriysurzhikov.gidassistant.R
-import com.yuriysurzhikov.gidassistant.model.Interests
+import com.yuriysurzhikov.gidassistant.model.Interest
 
-class InterestsRecyclerAdapter(var list: List<Interests>) :
+class InterestsRecyclerAdapter(var list: List<Interest>) :
     RecyclerView.Adapter<InterestsRecyclerAdapter.InterestsViewHolder>() {
 
-    fun updateList(list: List<Interests>) {
+    fun updateList(list: List<Interest>) {
         this.list = list
         notifyDataSetChanged()
-    }
-
-    inner class InterestsViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
-        private var title: TextView = view.findViewById(R.id.interests_id)
-
-        fun bind(interests: Interests) {
-            title.text = interests.id
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InterestsViewHolder {
@@ -33,5 +25,14 @@ class InterestsRecyclerAdapter(var list: List<Interests>) :
 
     override fun onBindViewHolder(holder: InterestsViewHolder, position: Int) {
         holder.bind(list[position])
+    }
+
+    inner class InterestsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+        private var title: TextView = view.findViewById(R.id.interests_id)
+
+        fun bind(interest: Interest) {
+            title.text = interest.id
+        }
     }
 }

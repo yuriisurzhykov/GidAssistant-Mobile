@@ -31,14 +31,9 @@ class InterestsFragment: Fragment() {
             recyclerView = it.findViewById(R.id.recycler_view)
             recyclerAdapter = InterestsRecyclerAdapter(emptyList())
             viewModel.loadData()
-            viewModel.interests.observe(viewLifecycleOwner, Observer {
+            viewModel.interest.observe(viewLifecycleOwner, Observer {
                 recyclerAdapter.updateList(it)
             })
-        }
-        activity?.let {
-            if(view is OnInterestsClicked) {
-                (it as OnInterestsClicked).openInterestsFragment("Interests")
-            }
         }
     }
 

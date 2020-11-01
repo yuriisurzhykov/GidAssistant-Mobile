@@ -3,7 +3,7 @@ package com.yuriysurzhikov.gidassistant.repository.retrofit.routes
 import com.yuriysurzhikov.gidassistant.model.Route
 import com.yuriysurzhikov.gidassistant.utils.EntityMapper
 
-class RoutesEntityMapper : EntityMapper<Route, RouteRetrofitEntity> {
+class RoutesRemoteEntityMapper : EntityMapper<Route, RouteRetrofitEntity> {
     override fun mapFromEntity(entity: Route): RouteRetrofitEntity {
         return RouteRetrofitEntity(
             "",

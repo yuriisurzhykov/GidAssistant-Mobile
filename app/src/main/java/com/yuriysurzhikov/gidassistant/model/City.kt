@@ -1,4 +1,10 @@
 package com.yuriysurzhikov.gidassistant.model
 
-class City {
-}
+data class City(
+    val name: String,
+    val lat: Double,
+    val lng: Double,
+    val googleUrl: String,
+    val photoUrl: String,
+    val type: String
+)

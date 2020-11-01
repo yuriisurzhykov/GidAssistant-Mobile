@@ -3,7 +3,7 @@ package com.yuriysurzhikov.gidassistant.repository.retrofit.places
 import com.yuriysurzhikov.gidassistant.model.Place
 import com.yuriysurzhikov.gidassistant.utils.EntityMapper
 
-class PlacesEntityMapper: EntityMapper<Place, PlaceRetrofitEntity> {
+class PlacesRemoteEntityMapper: EntityMapper<Place, PlaceRetrofitEntity> {
 
     override fun mapFromEntity(entity: Place): PlaceRetrofitEntity {
         return PlaceRetrofitEntity(

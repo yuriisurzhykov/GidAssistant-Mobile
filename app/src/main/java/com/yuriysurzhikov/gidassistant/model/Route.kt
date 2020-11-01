@@ -1,4 +1,8 @@
 package com.yuriysurzhikov.gidassistant.model
 
-class Route {
-}
+data class Route(
+    val name: String,
+    val amountPlaces: Int,
+    val routeLengthM: Long,
+    val places: List<Place>
+)

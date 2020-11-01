@@ -30,6 +30,7 @@ class AbstractNavigationActivity:
 
     override fun onBackPressed() {
         super.onBackPressed()
+        clearCurrentFromStack()
     }
 
     override fun onBackStackChange() {
@@ -38,8 +39,14 @@ class AbstractNavigationActivity:
         }
     }
 
-    override fun clearCurrentFromStack() {
+    override fun invalidateOptionsMenu() {
+        super.invalidateOptionsMenu()
+    }
 
+    override fun clearCurrentFromStack() {
+        if(supportFragmentManager.backStackEntryCount > 1) {
+            supportFragmentManager.popBackStack()
+        }
     }
 
     override fun openFragment(fragment: Fragment, tag: String?) {

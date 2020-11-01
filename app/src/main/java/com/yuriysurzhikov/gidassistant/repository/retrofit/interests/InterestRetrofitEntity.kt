@@ -1,5 +1,5 @@
 package com.yuriysurzhikov.gidassistant.repository.retrofit.interests
 
-data class InterestsRetrofitEntity(
+data class InterestRetrofitEntity(
     val name: String
 )
