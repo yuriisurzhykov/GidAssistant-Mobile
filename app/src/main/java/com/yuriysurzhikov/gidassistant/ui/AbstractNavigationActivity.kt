@@ -11,6 +11,7 @@ import com.yuriysurzhikov.gidassistant.ui.interests.OnInterestsClicked
 
 class AbstractNavigationActivity:
     AppCompatActivity(),
+    INavigation,
     OnInterestsClicked {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,11 +28,27 @@ class AbstractNavigationActivity:
         openFragment(fragment, InterestsFragment.TAG)
     }
 
-    fun openFragment(fragment: Fragment, tag: String?) {
+    override fun onBackPressed() {
+        super.onBackPressed()
+    }
+
+    override fun onBackStackChange() {
+        if(supportFragmentManager.backStackEntryCount > 1) {
+
+        }
+    }
+
+    override fun clearCurrentFromStack() {
+
+    }
+
+    override fun openFragment(fragment: Fragment, tag: String?) {
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.main_container, fragment, tag)
             .addToBackStack(tag)
             .commit()
     }
+
+
 }
