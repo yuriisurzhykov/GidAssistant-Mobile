@@ -32,7 +32,6 @@ constructor(
         loading.set(true)
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                delay(3000)
                 interestsRepository.getInterestsList().onEach {
                     _interests.postValue(it)
                 }.launchIn(viewModelScope)

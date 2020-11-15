@@ -4,6 +4,6 @@ import com.yuriysurzhikov.gidassistant.repository.interests.remote.InterestRetro
 import retrofit2.http.GET
 
 interface InterestsNetworkService {
-    @GET("/interests/all")
+    @GET("/interest/all")
     suspend fun getInterestsList(): List<InterestRetrofitEntity>
 }

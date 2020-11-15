@@ -32,7 +32,7 @@ class InterestsRecyclerAdapter(var list: List<Interest>) :
         private var title: TextView = view.findViewById(R.id.interests_id)
 
         fun bind(interest: Interest) {
-            title.text = interest.id
+            title.text = interest.name
         }
     }
 }

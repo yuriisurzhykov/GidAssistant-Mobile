@@ -5,14 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.yuriysurzhikov.gidassistant.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class InterestsFragment: Fragment() {
 
-    private lateinit var viewModel: InterestsViewModel
+    private val viewModel: InterestsViewModel by viewModels()
     private lateinit var recyclerView: RecyclerView
     private lateinit var recyclerAdapter: InterestsRecyclerAdapter
 
@@ -21,7 +25,6 @@ class InterestsFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProvider(this).get(InterestsViewModel::class.java)
         return inflater.inflate(R.layout.fragment_interests, container, false)
     }
 
@@ -30,6 +33,8 @@ class InterestsFragment: Fragment() {
         getView()?.let {
             recyclerView = it.findViewById(R.id.recycler_view)
             recyclerAdapter = InterestsRecyclerAdapter(emptyList())
+            recyclerView.layoutManager = LinearLayoutManager(context)
+            recyclerView.adapter = recyclerAdapter
             viewModel.loadData()
             viewModel.interest.observe(viewLifecycleOwner, Observer {
                 recyclerAdapter.updateList(it)
