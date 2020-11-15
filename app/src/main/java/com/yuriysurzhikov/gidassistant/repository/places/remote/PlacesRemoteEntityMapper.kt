@@ -3,8 +3,9 @@ package com.yuriysurzhikov.gidassistant.repository.places.remote
 import com.yuriysurzhikov.gidassistant.model.Place
 import com.yuriysurzhikov.gidassistant.repository.places.remote.PlaceRetrofitEntity
 import com.yuriysurzhikov.gidassistant.utils.EntityMapper
+import javax.inject.Inject
 
-class PlacesRemoteEntityMapper: EntityMapper<Place, PlaceRetrofitEntity> {
+class PlacesRemoteEntityMapper @Inject constructor(): EntityMapper<Place, PlaceRetrofitEntity> {
 
     override fun mapFromEntity(entity: Place): PlaceRetrofitEntity {
         return PlaceRetrofitEntity(
@@ -27,5 +28,9 @@ class PlacesRemoteEntityMapper: EntityMapper<Place, PlaceRetrofitEntity> {
             domainModel.latitude,
             domainModel.longitude
         )
+    }
+
+    override fun mapListToEntity(domainModels: List<PlaceRetrofitEntity>): List<Place> {
+        return domainModels.map { mapToEntity(it) }
     }
 }

@@ -2,8 +2,9 @@ package com.yuriysurzhikov.gidassistant.repository.interests.remote
 
 import com.yuriysurzhikov.gidassistant.model.Interest
 import com.yuriysurzhikov.gidassistant.utils.EntityMapper
+import javax.inject.Inject
 
-class InterestsRemoteEntityMapper: EntityMapper<Interest, InterestRetrofitEntity> {
+class InterestsRemoteEntityMapper @Inject constructor(): EntityMapper<Interest, InterestRetrofitEntity> {
     override fun mapFromEntity(entity: Interest): InterestRetrofitEntity {
         return InterestRetrofitEntity(
             entity.name

@@ -2,8 +2,9 @@ package com.yuriysurzhikov.gidassistant.repository.city.remote
 
 import com.yuriysurzhikov.gidassistant.model.City
 import com.yuriysurzhikov.gidassistant.utils.EntityMapper
+import javax.inject.Inject
 
-class CityRemoteEntityMapper : EntityMapper<City, CityRetrofitEntity> {
+class CityRemoteEntityMapper @Inject constructor() : EntityMapper<City, CityRetrofitEntity> {
     override fun mapFromEntity(entity: City): CityRetrofitEntity {
         return CityRetrofitEntity(
             "",
@@ -25,5 +26,9 @@ class CityRemoteEntityMapper : EntityMapper<City, CityRetrofitEntity> {
             domainModel.photoUrl,
             domainModel.type
         )
+    }
+
+    override fun mapListToEntity(domainModels: List<CityRetrofitEntity>): List<City> {
+        return domainModels.map { mapToEntity(it) }
     }
 }
