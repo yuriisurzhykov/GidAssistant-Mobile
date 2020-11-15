@@ -1,4 +1,4 @@
-package com.yuriysurzhikov.gidassistant.repository.retrofit.interests
+package com.yuriysurzhikov.gidassistant.repository.interests.remote
 
 import com.yuriysurzhikov.gidassistant.model.Interest
 import com.yuriysurzhikov.gidassistant.utils.EntityMapper
@@ -15,4 +15,9 @@ class InterestsRemoteEntityMapper: EntityMapper<Interest, InterestRetrofitEntity
             domainModel.name
         )
     }
+
+    override fun mapListToEntity(domainModels: List<InterestRetrofitEntity>): List<Interest> {
+        return domainModels.map { mapToEntity(it) }
+    }
+
 }

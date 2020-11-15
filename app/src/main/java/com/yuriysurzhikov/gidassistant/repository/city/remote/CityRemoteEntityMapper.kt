@@ -1,4 +1,4 @@
-package com.yuriysurzhikov.gidassistant.repository.retrofit.city
+package com.yuriysurzhikov.gidassistant.repository.city.remote
 
 import com.yuriysurzhikov.gidassistant.model.City
 import com.yuriysurzhikov.gidassistant.utils.EntityMapper

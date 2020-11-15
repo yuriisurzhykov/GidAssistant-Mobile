@@ -1,6 +1,7 @@
-package com.yuriysurzhikov.gidassistant.repository.retrofit.places
+package com.yuriysurzhikov.gidassistant.repository.places.remote
 
 import com.yuriysurzhikov.gidassistant.model.Place
+import com.yuriysurzhikov.gidassistant.repository.places.remote.PlaceRetrofitEntity
 import com.yuriysurzhikov.gidassistant.utils.EntityMapper
 
 class PlacesRemoteEntityMapper: EntityMapper<Place, PlaceRetrofitEntity> {

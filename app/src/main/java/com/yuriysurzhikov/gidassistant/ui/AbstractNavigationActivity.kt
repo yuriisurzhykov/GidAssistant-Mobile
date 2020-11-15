@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment
 import com.yuriysurzhikov.gidassistant.R
 import com.yuriysurzhikov.gidassistant.ui.interests.InterestsFragment
 import com.yuriysurzhikov.gidassistant.ui.interests.OnInterestsClicked
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AbstractNavigationActivity:
     AppCompatActivity(),
     INavigation,

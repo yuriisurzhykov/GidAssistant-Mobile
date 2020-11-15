@@ -1,7 +1,7 @@
-package com.yuriysurzhikov.gidassistant.repository.retrofit.user
+package com.yuriysurzhikov.gidassistant.repository.user.remote
 
 import com.google.gson.annotations.SerializedName
-import com.yuriysurzhikov.gidassistant.repository.retrofit.interests.InterestRetrofitEntity
+import com.yuriysurzhikov.gidassistant.repository.interests.remote.InterestRetrofitEntity
 
 data class UserRetrofitEntity(
     @SerializedName("id")

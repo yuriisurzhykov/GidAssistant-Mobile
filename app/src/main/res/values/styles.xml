@@ -1,10 +1,45 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+
+        <!-- Base application colors -->
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/gidassistant_primary</item>s
+        <item name="colorAccent">@color/gidassistant_accent</item>
+        <item name="android:statusBarColor">@color/gidassistant_transparent</item>
+        <item name="android:textColor">@color/gidassistant_primary_text</item>
+        <item name="android:textColorSecondary">@color/gidassistamt_secondary_text</item>
+
+        <!-- Dialogs -->
+        <item name="dialogTheme">@style/Widget.GidAssistant.Dialog</item>
+        <item name="alertDialogTheme">@style/Widget.GidAssistant.Dialog.Alert</item>
+
+        <item name="buttonStyle">@style/Widget.GidAssistant.Button</item>
+    </style>
+
+    <style name="Widget"/>
+    <style name="Widget.GidAssistant"/>
+    <style name="Widget.GidAssistant.Dialog" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="android:textColor">@color/gidassistamt_secondary_text</item>
+        <item name="colorAccent">@color/gidassistant_accent</item>
+    </style>
+
+    <style name="Widget.GidAssistant.Dialog.Alert" parent="Widget.GidAssistant.Dialog">
+    </style>
+
+    <style name="Widget.GidAssistant.Button">
+        <item name="background">@drawable/rounded_button</item>
+        <item name="android:textColor">@color/gidassistamt_secondary_text</item>
+        <item name="colorAccent">@color/gidassistant_accent</item>
+        <item name="android:colorAccent">@color/gidassistant_accent</item>
+    </style>
+
+    <style name="Widget.GidAssistant.Chip" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="backgroundTint">@color/gidassistant_chip_neutral</item>
+    </style>
+
+    <style name="Widget.GidAssistant.ChipGroup" parent="Widget.MaterialComponents.ChipGroup">
+
     </style>
 
 </resources>

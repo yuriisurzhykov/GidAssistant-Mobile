@@ -1,4 +1,4 @@
-package com.yuriysurzhikov.gidassistant.repository.retrofit.routes
+package com.yuriysurzhikov.gidassistant.repository.routes.remote
 
 import com.yuriysurzhikov.gidassistant.model.Route
 import com.yuriysurzhikov.gidassistant.utils.EntityMapper

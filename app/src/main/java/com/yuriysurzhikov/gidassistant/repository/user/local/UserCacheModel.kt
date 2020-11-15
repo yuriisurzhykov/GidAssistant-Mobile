@@ -1,4 +1,4 @@
-package com.yuriysurzhikov.gidassistant.repository.room.user
+package com.yuriysurzhikov.gidassistant.repository.user.local
 
 import androidx.room.PrimaryKey
 

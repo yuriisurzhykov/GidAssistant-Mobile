@@ -1,40 +1,45 @@
 package com.yuriysurzhikov.gidassistant.ui.interests
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.databinding.ObservableField
+import androidx.hilt.Assisted
+import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.*
 import com.yuriysurzhikov.gidassistant.model.Interest
+import com.yuriysurzhikov.gidassistant.repository.interests.InterestsRepository
 import com.yuriysurzhikov.gidassistant.utils.DataState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
-class InterestsViewModel : ViewModel() {
+class InterestsViewModel
+@ViewModelInject
+constructor(
+    private val interestsRepository: InterestsRepository,
+    @Assisted private val savedStateHandle: SavedStateHandle
+) : ViewModel() {
+
+    val loading = ObservableField<Boolean>()
 
     private val _interests = MutableLiveData<List<Interest>>()
-    private val _dataState = MutableLiveData<DataState<String>>()
 
     val interest: LiveData<List<Interest>>
         get() = _interests
-    val dataState: LiveData<DataState<String>>
-        get() = _dataState
 
     fun loadData() {
+        loading.set(true)
         CoroutineScope(Dispatchers.IO).launch {
-            _dataState.postValue(DataState.Loading)
             try {
                 delay(3000)
-                val list = listOf(
-                    Interest("Title 1"),
-                    Interest("Title 2"),
-                    Interest("Title 3"),
-                    Interest("Title 4")
-                )
-                _interests.postValue(list)
-                _dataState.postValue(DataState.Success("Success"))
+                interestsRepository.getInterestsList().onEach {
+                    _interests.postValue(it)
+                }.launchIn(viewModelScope)
             } catch (ex: Throwable) {
-                _dataState.postValue(DataState.Error(ex))
+                ex.printStackTrace()
+            } finally {
+                loading.set(false)
             }
         }
     }

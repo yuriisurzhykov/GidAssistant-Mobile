@@ -1,4 +1,4 @@
-package com.yuriysurzhikov.gidassistant.repository.retrofit.places
+package com.yuriysurzhikov.gidassistant.repository.places.remote
 
 import com.google.gson.annotations.SerializedName
 
