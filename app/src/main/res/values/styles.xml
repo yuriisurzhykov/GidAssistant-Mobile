@@ -11,6 +11,8 @@
         <item name="android:statusBarColor">@color/gidassistant_transparent</item>
         <item name="android:textColor">@color/gidassistant_primary_text</item>
         <item name="android:textColorSecondary">@color/gidassistamt_secondary_text</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
 
         <!-- Dialogs -->
         <item name="dialogTheme">@style/Widget.GidAssistant.Dialog</item>
@@ -20,6 +22,11 @@
 
         <item name="chipStyle">@style/Widget.GidAssistant.Chip</item>
         <item name="chipGroupStyle">@style/Widget.GidAssistant.ChipGroup</item>
+
+        <item name="toolbarStyle">@style/Widget.GidAssistant.Toolbar</item>
+        <item name="actionBarStyle">@style/Widget.GidAssistant.ActionBar</item>
+        <item name="app_toolbarStyle">@style/Widget.GidAssistant.Toolbar</item>
+        <item name="onboardingBackgroundColor">@color/onboardingBackgroundColor</item>
     </style>
 
     <style name="Widget"/>
@@ -34,11 +41,23 @@
     <style name="Widget.GidAssistant.Dialog.Alert" parent="Widget.GidAssistant.Dialog">
     </style>
 
+    <style name="Widget.GidAssistant.Toolbar" parent="Widget.AppCompat.ActionBar">
+
+    </style>
+
+    <style name="Widget.GidAssistant.ActionBar" parent="Widget.GidAssistant.Toolbar">
+
+    </style>
+
     <style name="Widget.GidAssistant.Button">
         <item name="background">@drawable/rounded_button</item>
         <item name="android:textColor">@color/gidassistamt_secondary_text</item>
         <item name="colorAccent">@color/gidassistant_accent</item>
         <item name="android:colorAccent">@color/gidassistant_accent</item>
+        <item name="android:padding">10dp</item>
+        <item name="paddingStart">25dp</item>
+        <item name="paddingEnd">25dp</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
     <style name="Widget.GidAssistant.Chip" parent="Widget.MaterialComponents.Chip.Choice">
