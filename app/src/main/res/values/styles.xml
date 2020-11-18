@@ -4,8 +4,10 @@
 
         <!-- Base application colors -->
         <item name="windowActionBar">false</item>
-        <item name="colorPrimary">@color/gidassistant_primary</item>s
+        <item name="colorPrimary">@color/gidassistant_primary</item>
         <item name="colorAccent">@color/gidassistant_accent</item>
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:fontFamily">@font/montserrat</item>
         <item name="android:statusBarColor">@color/gidassistant_transparent</item>
         <item name="android:textColor">@color/gidassistant_primary_text</item>
         <item name="android:textColorSecondary">@color/gidassistamt_secondary_text</item>
@@ -15,11 +17,16 @@
         <item name="alertDialogTheme">@style/Widget.GidAssistant.Dialog.Alert</item>
 
         <item name="buttonStyle">@style/Widget.GidAssistant.Button</item>
+
+        <item name="chipStyle">@style/Widget.GidAssistant.Chip</item>
+        <item name="chipGroupStyle">@style/Widget.GidAssistant.ChipGroup</item>
     </style>
 
     <style name="Widget"/>
     <style name="Widget.GidAssistant"/>
     <style name="Widget.GidAssistant.Dialog" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:fontFamily">@font/montserrat</item>
         <item name="android:textColor">@color/gidassistamt_secondary_text</item>
         <item name="colorAccent">@color/gidassistant_accent</item>
     </style>
@@ -35,11 +42,14 @@
     </style>
 
     <style name="Widget.GidAssistant.Chip" parent="Widget.MaterialComponents.Chip.Choice">
-        <item name="backgroundTint">@color/gidassistant_chip_neutral</item>
+        <item name="chipBackgroundColor">@color/gidassistant_chip_neutral</item>
+        <item name="colorPrimary">@color/gidassistant_chip_pressed</item>
+        <item name="colorOnSurface">@color/gidassistant_chip_neutral</item>
     </style>
 
     <style name="Widget.GidAssistant.ChipGroup" parent="Widget.MaterialComponents.ChipGroup">
-
+        <item name="singleLine">false</item>
+        <item name="android:singleLine">false</item>
     </style>
 
 </resources>

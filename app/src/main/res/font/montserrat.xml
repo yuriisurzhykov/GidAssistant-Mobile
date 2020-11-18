@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--    Light-->
+    <font
+        android:font="@font/montserrat_light"
+        android:fontWeight="300"
+        android:fontStyle="normal"/>
+
+    <!--    Light Italic-->
+    <font
+        android:font="@font/montserrat_light_italic"
+        android:fontWeight="300"
+        android:fontStyle="italic"/>
+
+    <!--    Regular-->
+    <font
+        android:font="@font/montserrat_regular"
+        android:fontWeight="400"
+        android:fontStyle="normal"/>
+
+    <!--    Regular Italic-->
+    <font
+        android:font="@font/montserrat_italic"
+        android:fontWeight="400"
+        android:fontStyle="italic"/>
+
+    <!--    Regular-->
+    <font
+        android:font="@font/montserrat_medium"
+        android:fontWeight="500"
+        android:fontStyle="normal"/>
+
+    <!--    Regular-->
+    <font
+        android:font="@font/montserrat_medium_italic"
+        android:fontWeight="500"
+        android:fontStyle="italic"/>
+
+    <!--    Bold-->
+    <font
+        android:font="@font/montserrat_bold"
+        android:fontWeight="700"
+        android:fontStyle="normal"/>
+
+    <!--    Bold Italic-->
+    <font
+        android:font="@font/montserrat_bold_italic"
+        android:fontWeight="700"
+        android:fontStyle="italic"/>
+
+</font-family>

@@ -5,7 +5,7 @@
     <color name="gidassistant_white">@android:color/white</color>
     <color name="gidassistant_black">@android:color/black</color>
     <color name="gidassistant_transparent">@android:color/transparent</color>
-    <color name="gidassistant_gray">#77000000</color>
+    <color name="gidassistant_gray">#434343</color>
     <color name="gidassistant_dark_gray">#99000000</color>
 
     <color name="gidassistant_primary">@color/gidassistant_blue</color>
@@ -14,8 +14,10 @@
     <color name="gidassistamt_secondary_text">@color/gidassistant_white</color>
 
     <color name="gidassistant_chip_neutral">@color/gidassistant_gray</color>
-    <color name="gidassistant_chip_pressed">@color/gidassistant_dark_gray</color>
+    <color name="gidassistant_chip_pressed">@color/gidassistant_primary</color>
     <color name="gidassistant_chip_selected">@color/gidassistant_primary</color>
     <color name="gidassistant_chip_text">@color/gidassistamt_secondary_text</color>
+
+    <color name="polyline_color">@color/gidassistant_primary</color>
 
 </resources>
