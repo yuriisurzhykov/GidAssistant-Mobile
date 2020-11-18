@@ -5,6 +5,6 @@ import com.yuriysurzhikov.gidassistant.ui.IRefreshableFragment
 
 class InterestsPickerFragment: AbstractFragment(), IRefreshableFragment {
     override fun refresh() {
-
+            ///
     }
 }
