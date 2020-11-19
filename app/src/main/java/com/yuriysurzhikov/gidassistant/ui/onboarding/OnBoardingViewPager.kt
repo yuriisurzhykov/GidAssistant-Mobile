@@ -1,10 +1,11 @@
-package com.yuriysurzhikov.gidassistant.customviews.onboarding
+package com.yuriysurzhikov.gidassistant.ui.onboarding
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 
-class OnBoardingViewPager(fm: FragmentManager): FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT), IOnBoarding {
+class OnBoardingViewPager(fm: FragmentManager): FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT),
+    IOnBoarding {
 
     private val listOfPages = mutableListOf<OnBoardingFragment>()
 

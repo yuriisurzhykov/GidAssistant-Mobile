@@ -1,11 +1,11 @@
-package com.yuriysurzhikov.gidassistant.customviews.onboarding.permissions
+package com.yuriysurzhikov.gidassistant.ui.onboarding.permissions
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.yuriysurzhikov.gidassistant.customviews.onboarding.OnBoardingFragment
+import com.yuriysurzhikov.gidassistant.ui.onboarding.OnBoardingFragment
 import com.yuriysurzhikov.gidassistant.databinding.FragmentOnboardingPermissionsBinding
 
 class PermissionsOnBoardingFragment: OnBoardingFragment() {

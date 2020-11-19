@@ -1,4 +1,4 @@
-package com.yuriysurzhikov.gidassistant.customviews.onboarding
+package com.yuriysurzhikov.gidassistant.ui.onboarding
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,9 +8,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.yuriysurzhikov.gidassistant.R
-import com.yuriysurzhikov.gidassistant.customviews.onboarding.interests.InterestsOnBoardingFragment
-import com.yuriysurzhikov.gidassistant.customviews.onboarding.permissions.PermissionsOnBoardingFragment
-import com.yuriysurzhikov.gidassistant.customviews.onboarding.welcome.WelcomeOnBoardingFragment
+import com.yuriysurzhikov.gidassistant.ui.onboarding.interests.InterestsOnBoardingFragment
+import com.yuriysurzhikov.gidassistant.ui.onboarding.permissions.PermissionsOnBoardingFragment
+import com.yuriysurzhikov.gidassistant.ui.onboarding.welcome.WelcomeOnBoardingFragment
 import com.yuriysurzhikov.gidassistant.databinding.ActivityOnboardingBinding
 import com.yuriysurzhikov.gidassistant.ui.AbstractNavigationActivity
 import com.yuriysurzhikov.gidassistant.utils.setGone
@@ -26,7 +26,10 @@ class OnBoardingActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_onboarding)
-        pagerAdapter = OnBoardingViewPager(supportFragmentManager)
+        pagerAdapter =
+            OnBoardingViewPager(
+                supportFragmentManager
+            )
         pagerAdapter.addScreen(WelcomeOnBoardingFragment(), "welcome_fragment")
         pagerAdapter.addScreen(InterestsOnBoardingFragment(), "interests_fragment")
         pagerAdapter.addScreen(PermissionsOnBoardingFragment(), "permissions_fragment")
@@ -64,7 +67,8 @@ class OnBoardingActivity: AppCompatActivity() {
         binding.indicator.setViewPager(binding.viewPager)
     }
 
-    private val onBoardingCallback = object: OnBoarding.OnBoardingListener {
+    private val onBoardingCallback = object:
+        OnBoarding.OnBoardingListener {
         override fun onNextClick(position: Int, pagerAdapter: FragmentStatePagerAdapter) {
             binding.viewPager.currentItem = position
         }

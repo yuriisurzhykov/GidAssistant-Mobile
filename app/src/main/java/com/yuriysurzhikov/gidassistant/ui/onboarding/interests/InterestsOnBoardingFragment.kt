@@ -1,4 +1,4 @@
-package com.yuriysurzhikov.gidassistant.customviews.onboarding.interests
+package com.yuriysurzhikov.gidassistant.ui.onboarding.interests
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.yuriysurzhikov.gidassistant.R
 import com.yuriysurzhikov.gidassistant.customviews.interests.InterestsChipsAdapter
 import com.yuriysurzhikov.gidassistant.customviews.interests.OnInterestsStateCallback
-import com.yuriysurzhikov.gidassistant.customviews.onboarding.OnBoardingFragment
+import com.yuriysurzhikov.gidassistant.ui.onboarding.OnBoardingFragment
 import com.yuriysurzhikov.gidassistant.databinding.FragmentOnboardingInterestsBinding
 import com.yuriysurzhikov.gidassistant.model.Interest
 import com.yuriysurzhikov.gidassistant.ui.interests.InterestsRecyclerAdapter

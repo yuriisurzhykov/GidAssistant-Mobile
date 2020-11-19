@@ -1,4 +1,4 @@
-package com.yuriysurzhikov.gidassistant.customviews.onboarding
+package com.yuriysurzhikov.gidassistant.ui.onboarding
 
 import androidx.fragment.app.Fragment
 import com.yuriysurzhikov.gidassistant.ui.IRefreshableFragment

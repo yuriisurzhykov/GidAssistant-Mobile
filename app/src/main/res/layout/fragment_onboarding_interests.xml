@@ -6,7 +6,7 @@
         <import type="android.view.View"/>
         <variable
             name="viewModel"
-            type="com.yuriysurzhikov.gidassistant.customviews.onboarding.interests.InterestsViewModel" />
+            type="com.yuriysurzhikov.gidassistant.ui.onboarding.interests.InterestsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

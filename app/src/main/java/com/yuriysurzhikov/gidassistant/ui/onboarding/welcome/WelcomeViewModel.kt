@@ -1,4 +1,4 @@
-package com.yuriysurzhikov.gidassistant.customviews.onboarding.welcome
+package com.yuriysurzhikov.gidassistant.ui.onboarding.welcome
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel

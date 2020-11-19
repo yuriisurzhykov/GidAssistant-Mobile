@@ -1,4 +1,4 @@
-package com.yuriysurzhikov.gidassistant.customviews.onboarding
+package com.yuriysurzhikov.gidassistant.ui.onboarding
 
 import android.app.Activity
 import android.content.Intent

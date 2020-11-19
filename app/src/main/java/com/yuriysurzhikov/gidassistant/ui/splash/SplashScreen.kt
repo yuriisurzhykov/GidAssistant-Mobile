@@ -5,10 +5,10 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import com.yuriysurzhikov.gidassistant.customviews.onboarding.interests.InterestsOnBoardingFragment
-import com.yuriysurzhikov.gidassistant.customviews.onboarding.OnBoarding
-import com.yuriysurzhikov.gidassistant.customviews.onboarding.permissions.PermissionsOnBoardingFragment
-import com.yuriysurzhikov.gidassistant.customviews.onboarding.welcome.WelcomeOnBoardingFragment
+import com.yuriysurzhikov.gidassistant.ui.onboarding.interests.InterestsOnBoardingFragment
+import com.yuriysurzhikov.gidassistant.ui.onboarding.OnBoarding
+import com.yuriysurzhikov.gidassistant.ui.onboarding.permissions.PermissionsOnBoardingFragment
+import com.yuriysurzhikov.gidassistant.ui.onboarding.welcome.WelcomeOnBoardingFragment
 import com.yuriysurzhikov.gidassistant.ui.AbstractNavigationActivity
 import dagger.hilt.android.AndroidEntryPoint
 

@@ -1,4 +1,4 @@
-package com.yuriysurzhikov.gidassistant.customviews.onboarding.interests
+package com.yuriysurzhikov.gidassistant.ui.onboarding.interests
 
 import androidx.databinding.ObservableField
 import androidx.hilt.Assisted
