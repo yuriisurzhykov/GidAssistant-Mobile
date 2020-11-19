@@ -74,7 +74,6 @@
         <item name="colorPrimary">@color/gidassistant_chip_pressed</item>
         <item name="colorOnSurface">@color/gidassistant_chip_neutral</item>
         <item name="android:gravity">center</item>
-        <
     </style>
 
     <style name="Widget.GidAssistant.ChipGroup" parent="Widget.MaterialComponents.ChipGroup">
