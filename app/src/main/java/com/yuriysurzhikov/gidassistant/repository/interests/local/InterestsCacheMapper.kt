@@ -2,8 +2,9 @@ package com.yuriysurzhikov.gidassistant.repository.interests.local
 
 import com.yuriysurzhikov.gidassistant.model.Interest
 import com.yuriysurzhikov.gidassistant.utils.EntityMapper
+import javax.inject.Inject
 
-class InterestsCacheMapper: EntityMapper<Interest, InterestCache> {
+class InterestsCacheMapper @Inject constructor(): EntityMapper<Interest, InterestCache> {
     override fun mapFromEntity(entity: Interest): InterestCache {
         return InterestCache(entity.name)
     }

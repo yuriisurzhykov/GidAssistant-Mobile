@@ -1,4 +1,4 @@
-package com.yuriysurzhikov.gidassistant.ui.interests
+package com.yuriysurzhikov.gidassistant.customviews.onboarding.interests
 
 import androidx.databinding.ObservableField
 import androidx.hilt.Assisted
@@ -6,10 +6,8 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.yuriysurzhikov.gidassistant.model.Interest
 import com.yuriysurzhikov.gidassistant.repository.interests.InterestsRepository
-import com.yuriysurzhikov.gidassistant.utils.DataState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -41,5 +39,21 @@ constructor(
                 loading.set(false)
             }
         }
+    }
+
+    fun interestSelected(interest: Interest) {
+        CoroutineScope(Dispatchers.IO).launch {
+            interestsRepository.save(interest)
+        }
+    }
+
+    fun interestDisabled(interest: Interest) {
+        CoroutineScope(Dispatchers.IO).launch {
+            interestsRepository.delete(interest)
+        }
+    }
+
+    fun refresh() {
+        loadData()
     }
 }

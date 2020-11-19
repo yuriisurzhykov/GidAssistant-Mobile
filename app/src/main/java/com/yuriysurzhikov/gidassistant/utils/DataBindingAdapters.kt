@@ -1,10 +1,9 @@
-package com.yuriysurzhikov.gidassistant.customviews.onboarding
+package com.yuriysurzhikov.gidassistant.utils
 
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
-
 
 @BindingAdapter("onboadring:src")
 fun setImageUri(view: ImageView, imageUri: String?) {

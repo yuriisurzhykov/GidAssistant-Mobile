@@ -35,5 +35,4 @@ class RetrofitModule {
     companion object {
         const val BASE_URL = BuildConfig.SERVER_BASE_URL
     }
-
 }

@@ -15,41 +15,35 @@
             type="String" />
     </data>
 
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="?onboardingBackgroundColor">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal"
-            android:background="?onboardingBackgroundColor">
+        <ImageView
+            android:id="@+id/welcome_image"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            onboadring:src="@{image}"/>
 
-            <ImageView
-                android:id="@+id/image"
-                android:layout_marginTop="@dimen/onboarding_margin_top"
-                android:layout_width="250dp"
-                android:layout_height="250dp"
-                onboadring:src="@{image}"/>
+        <TextView
+            android:id="@+id/welcome_title"
+            android:layout_marginTop="@dimen/onboarding_text_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gidassistant_primary"
+            style="@style/OnBoarding.Title"
+            android:text="@{title}"/>
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_marginTop="@dimen/onboarding_text_margin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/gidassistant_primary"
-                style="@style/OnBoarding.Title"
-                android:text="@{title}"/>
-
-            <TextView
-                android:id="@+id/description"
-                style="@style/OnBoarding.Description"
-                android:layout_marginTop="@dimen/onboarding_text_margin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:maxWidth="300dp"
-                android:text="@{description}"/>
-        </LinearLayout>
-    </RelativeLayout>
+        <TextView
+            android:id="@+id/welcome_description"
+            style="@style/OnBoarding.Description"
+            android:layout_marginTop="@dimen/onboarding_text_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="300dp"
+            android:text="@{description}"/>
+    </LinearLayout>
 </layout>

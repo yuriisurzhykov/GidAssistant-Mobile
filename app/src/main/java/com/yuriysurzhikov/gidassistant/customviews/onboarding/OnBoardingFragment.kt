@@ -1,11 +1,10 @@
 package com.yuriysurzhikov.gidassistant.customviews.onboarding
 
-import android.graphics.drawable.Drawable
 import androidx.fragment.app.Fragment
+import com.yuriysurzhikov.gidassistant.ui.IRefreshableFragment
 
-abstract class OnBoardingFragment: Fragment() {
+abstract class OnBoardingFragment: Fragment(), IRefreshableFragment {
 
-    companion object {
-        val TAG = OnBoardingFragment::class.simpleName
-    }
+    var TAG: String? = null
+    var mTitle: String? = null
 }

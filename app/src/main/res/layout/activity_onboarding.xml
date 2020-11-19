@@ -1,45 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center_horizontal">
+<layout>
 
-    <androidx.viewpager.widget.ViewPager
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:gravity="center_horizontal">
 
-    <com.rd.PageIndicatorView
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/next"
-        android:id="@+id/indicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:piv_animationType="worm"
-        app:piv_selectedColor="@color/gidassistant_primary"
-        app:piv_unselectedColor="@color/gidassistant_light_gray"
-        app:piv_radius="8dp"
-        app:piv_dynamicCount="true"
-        app:piv_interactiveAnimation="true"
-        android:layout_alignTop="@id/next"
-        android:layout_marginBottom="@dimen/default_padding"
-        app:piv_padding="12dp"/>
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
-        android:id="@+id/next"
-        style="@style/Widget.GidAssistant.Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/next_button" />
+        <com.rd.PageIndicatorView
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/next"
+            android:id="@+id/indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:piv_animationType="worm"
+            app:piv_selectedColor="@color/gidassistant_primary"
+            app:piv_unselectedColor="@color/gidassistant_light_gray"
+            app:piv_radius="6dp"
+            app:piv_dynamicCount="true"
+            app:piv_interactiveAnimation="true"
+            android:layout_alignTop="@id/next"
+            android:layout_marginBottom="@dimen/default_padding"
+            app:piv_padding="12dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/onboarding_next_margin"
+            android:gravity="center"
+            android:padding="@dimen/default_padding"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:id="@+id/next_text"
+                style="@style/OnBoarding.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/next_button" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_next"
+                app:tint="@color/gidassistant_primary" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/skip"
+            android:textAllCaps="true"
+            android:textSize="21sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/skip_button"
+            android:padding="@dimen/default_padding"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="@dimen/onboarding_next_margin"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

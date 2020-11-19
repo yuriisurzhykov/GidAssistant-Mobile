@@ -37,7 +37,7 @@ class AbstractNavigationActivity:
 
     override fun onBackStackChange() {
         if(supportFragmentManager.backStackEntryCount > 1) {
-
+            invalidateOptionsMenu()
         }
     }
 

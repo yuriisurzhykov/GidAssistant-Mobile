@@ -9,6 +9,8 @@
         <item name="fontStyle">normal</item>
         <item name="textAllCaps">true</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <style name="OnBoarding.Description">

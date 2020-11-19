@@ -1,4 +1,4 @@
-package com.yuriysurzhikov.gidassistant.customviews
+package com.yuriysurzhikov.gidassistant.customviews.interests
 
 import android.view.View
 import com.yuriysurzhikov.gidassistant.model.Interest

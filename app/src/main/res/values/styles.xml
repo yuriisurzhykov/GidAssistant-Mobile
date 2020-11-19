@@ -1,4 +1,13 @@
 <resources>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
 
@@ -64,11 +73,15 @@
         <item name="chipBackgroundColor">@color/gidassistant_chip_neutral</item>
         <item name="colorPrimary">@color/gidassistant_chip_pressed</item>
         <item name="colorOnSurface">@color/gidassistant_chip_neutral</item>
+        <item name="android:gravity">center</item>
+        <
     </style>
 
     <style name="Widget.GidAssistant.ChipGroup" parent="Widget.MaterialComponents.ChipGroup">
         <item name="singleLine">false</item>
         <item name="android:singleLine">false</item>
+        <item name="android:gravity">center</item>
+        <item name="chipStyle">@style/Widget.GidAssistant.Chip</item>
     </style>
 
 </resources>

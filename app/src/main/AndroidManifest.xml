@@ -15,7 +15,9 @@
 
         <activity android:name=".ui.AbstractNavigationActivity">
         </activity>
-        <activity android:name=".ui.splash.SplashScreen">
+        <activity
+            android:name=".ui.splash.SplashScreen"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

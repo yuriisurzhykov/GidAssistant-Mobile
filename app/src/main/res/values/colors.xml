@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="gidassistant_blue">#007AD8</color>
+    <color name="gidassistant_blue">#4269DE</color>
     <color name="gidassistant_blue_light">#D2E2EF</color>
     <color name="gidassistant_white">@android:color/white</color>
     <color name="gidassistant_black">@android:color/black</color>
     <color name="gidassistant_transparent">@android:color/transparent</color>
     <color name="gidassistant_gray">#434343</color>
     <color name="gidassistant_dark_gray">#99000000</color>
-    <color name="gidassistant_light_gray">#707070</color>
+    <color name="gidassistant_light_gray">#505050</color>
 
     <color name="gidassistant_primary">@color/gidassistant_blue</color>
     <color name="gidassistant_primary_light">@color/gidassistant_blue_light</color>
