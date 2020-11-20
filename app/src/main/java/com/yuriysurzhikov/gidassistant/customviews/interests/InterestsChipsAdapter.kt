@@ -1,7 +1,7 @@
 package com.yuriysurzhikov.gidassistant.customviews.interests
 
 import android.content.Context
-import android.util.AttributeSet
+import android.view.LayoutInflater
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.yuriysurzhikov.gidassistant.R
@@ -30,8 +30,10 @@ class InterestsChipsAdapter(val context: Context?) {
     }
 
     private fun createChip(interest: Interest): Chip {
-        val chip = Chip(context, null, R.style.Widget_GidAssistant_Chip)
+        val chip = LayoutInflater.from(context).inflate(R.layout.chip_layout, chipGroup, false) as Chip
         chip.text = interest.name
+        chip.isCheckable = true
+        chip.isClickable = true
         chip.setOnCheckedChangeListener { view, isChecked ->
             if(isChecked)
                 onInterestsStateCallback?.onSelected(view, interest)
