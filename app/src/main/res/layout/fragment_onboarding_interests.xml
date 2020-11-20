@@ -17,7 +17,7 @@
         <TextView
             android:id="@+id/interests_title"
             style="@style/OnBoarding.Title"
-            android:textColor="@color/gidassistant_light_gray"
+            android:textColor="@color/gidassistant_gray"
             android:layout_marginTop="?android:actionBarSize"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -25,24 +25,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:text="@string/interests_title"/>
-
-        <!--<com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/default_padding"
-            app:layout_constraintTop_toBottomOf="@+id/interests_title"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-            <com.google.android.material.textfield.TextInputEditText
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:backgroundTint="@color/gidassistant_blue_light"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/start_input"
-                android:inputType="textAutoComplete"
-                android:imeOptions="actionSearch"/>
-        </com.google.android.material.textfield.TextInputLayout>-->
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/interests_group"

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:onboadring="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="image"
+            type="android.graphics.drawable.Drawable" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,7 +22,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:textColor="@color/gidassistant_light_gray"
+            android:textColor="@color/gidassistant_gray"
             android:text="@string/permissions_title"/>
 
         <TextView
@@ -32,6 +35,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="@dimen/default_padding"
             android:text="@string/permissions_subtitle"/>
+
+        <ImageView
+            android:id="@+id/permssions_image"
+            android:layout_width="0dp"
+            android:layout_height="360dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            onboadring:src="@{image}"/>
 
         <!--<Button
             android:id="@+id/provide_permissions"

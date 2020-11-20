@@ -69,10 +69,11 @@
         <item name="android:textSize">20sp</item>
     </style>
 
-    <style name="Widget.GidAssistant.Chip" parent="Widget.MaterialComponents.Chip.Choice">
+    <style name="Widget.GidAssistant.Chip" parent="Widget.MaterialComponents.Chip.Filter">
         <item name="chipBackgroundColor">@color/gidassistant_chip_neutral</item>
         <item name="colorPrimary">@color/gidassistant_chip_pressed</item>
-        <item name="colorOnSurface">@color/gidassistant_chip_neutral</item>
+        <item name="colorOnSurface">@color/gidassistant_blue_light</item>
+        <item name="android:textColor">@color/gidassistant_primary_text</item>
         <item name="android:gravity">center</item>
     </style>
 
