@@ -27,7 +27,7 @@ class WelcomeOnBoardingFragment: OnBoardingFragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.title = resources.getString(R.string.welcome_title)
         binding.description = resources.getString(R.string.welcome_description)
-        binding.image = resources.getDrawable(R.drawable.ic_logo)
+        binding.image = resources.getDrawable(R.drawable.on_boarding_1)
     }
 
     override fun refresh() {

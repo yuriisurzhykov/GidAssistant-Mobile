@@ -67,7 +67,7 @@ class OnBoardingActivity: AppCompatActivity() {
         binding.indicator.setViewPager(binding.viewPager)
     }
 
-    private val onBoardingCallback = object:
+    val onBoardingCallback = object:
         OnBoarding.OnBoardingListener {
         override fun onNextClick(position: Int, pagerAdapter: FragmentStatePagerAdapter) {
             binding.viewPager.currentItem = position

@@ -1,6 +1,7 @@
 package com.yuriysurzhikov.gidassistant.ui.onboarding.interests
 
 import androidx.databinding.ObservableField
+import androidx.databinding.ObservableInt
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
@@ -20,6 +21,7 @@ constructor(
 ) : ViewModel() {
 
     val loading = ObservableField<Boolean>()
+    val interestsCounter = ObservableInt(0)
 
     private val _interests = MutableLiveData<List<Interest>>()
 
@@ -42,14 +44,18 @@ constructor(
     }
 
     fun interestSelected(interest: Interest) {
+        interestsCounter.set(interestsCounter.get() + 1)
         CoroutineScope(Dispatchers.IO).launch {
             interestsRepository.save(interest)
         }
     }
 
     fun interestDisabled(interest: Interest) {
-        CoroutineScope(Dispatchers.IO).launch {
-            interestsRepository.delete(interest)
+        if (interestsCounter.get() != 0) {
+            interestsCounter.set(interestsCounter.get() - 1)
+            CoroutineScope(Dispatchers.IO).launch {
+                interestsRepository.delete(interest)
+            }
         }
     }
 
