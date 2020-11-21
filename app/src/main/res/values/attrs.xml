@@ -4,4 +4,5 @@
     <attr name="onboardingBackgroundColor" format="color"/>
     <attr name="app_bottomNavigationSize" format="dimension"/>
     <attr name="app_floationActionButton" format="dimension"/>
+    <attr name="app_statusBarSize" format="dimension"/>
 </resources>

@@ -1,7 +1,7 @@
 package com.yuriysurzhikov.gidassistant.ui.onboarding
 
 import androidx.fragment.app.FragmentManager
-import com.yuriysurzhikov.gidassistant.ui.AbstractNavigationAdapter
+import com.yuriysurzhikov.gidassistant.customviews.navigation.AbstractNavigationAdapter
 
 class OnBoardingViewPager(fm: FragmentManager) : AbstractNavigationAdapter(fm), IOnBoarding {
 

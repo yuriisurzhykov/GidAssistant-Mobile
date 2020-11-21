@@ -31,9 +31,5 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:text="@string/profile"/>
-    
-    <!--<TextView
-        android:layout_width=""
-        android:layout_height=""
--->
+
 </LinearLayout>

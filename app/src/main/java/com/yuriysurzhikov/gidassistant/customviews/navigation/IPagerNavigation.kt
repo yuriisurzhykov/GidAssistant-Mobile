@@ -1,4 +1,6 @@
-package com.yuriysurzhikov.gidassistant.ui
+package com.yuriysurzhikov.gidassistant.customviews.navigation
+
+import com.yuriysurzhikov.gidassistant.ui.AbstractFragment
 
 interface IPagerNavigation {
     fun addScreen(fragment: AbstractFragment, TAG: String?)

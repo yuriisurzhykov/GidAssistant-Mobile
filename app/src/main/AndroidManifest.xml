@@ -28,7 +28,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.onboarding.OnBoardingActivity" />
-        <activity android:name="com.android.packageinstaller.permission.ui.ManagePermissionsActivity" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/maps_api_key"/>
     </application>
 
 </manifest>

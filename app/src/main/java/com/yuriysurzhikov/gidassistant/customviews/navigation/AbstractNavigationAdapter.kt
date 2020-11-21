@@ -1,9 +1,11 @@
-package com.yuriysurzhikov.gidassistant.ui
+package com.yuriysurzhikov.gidassistant.customviews.navigation
 
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
+import com.yuriysurzhikov.gidassistant.ui.AbstractFragment
 
-abstract class AbstractNavigationAdapter(fm: FragmentManager): FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT), IPagerNavigation {
+abstract class AbstractNavigationAdapter(fm: FragmentManager): FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT),
+    IPagerNavigation {
 
     protected val fragmentList = mutableListOf<AbstractFragment>()
 

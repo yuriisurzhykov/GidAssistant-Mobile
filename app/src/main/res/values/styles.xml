@@ -37,6 +37,7 @@
         <item name="app_toolbarStyle">@style/Widget.GidAssistant.Toolbar</item>
         <item name="app_bottomNavigationSize">@dimen/navigation_size</item>
         <item name="app_floationActionButton">@dimen/floating_action_button</item>
+        <item name="app_statusBarSize">@dimen/status_bar_size</item>
         <item name="onboardingBackgroundColor">@color/onboardingBackgroundColor</item>
     </style>
 

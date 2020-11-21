@@ -28,7 +28,6 @@
             android:layout_height="?app_bottomNavigationSize"
             android:layout_marginStart="@dimen/small_padding"
             android:layout_marginEnd="@dimen/small_padding"
-            android:layout_marginBottom="@dimen/small_padding"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
