@@ -5,6 +5,8 @@ import androidx.databinding.ObservableInt
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
+import com.yuriysurzhikov.gidassistant.App
+import com.yuriysurzhikov.gidassistant.R
 import com.yuriysurzhikov.gidassistant.model.Interest
 import com.yuriysurzhikov.gidassistant.repository.interests.InterestsRepository
 import kotlinx.coroutines.CoroutineScope
@@ -22,10 +24,13 @@ constructor(
 
     val loading = ObservableField<Boolean>()
     val interestsCounter = ObservableInt(0)
+    val counterString = ObservableField("")
 
-    private val _interests = MutableLiveData<List<Interest>>()
+    private val selectedList = mutableListOf<Interest>()
 
-    val interest: LiveData<List<Interest>>
+    private val _interests = MutableLiveData<HashMap<Interest, Boolean>>()
+
+    val interest: LiveData<HashMap<Interest, Boolean>>
         get() = _interests
 
     fun loadData() {
@@ -33,8 +38,14 @@ constructor(
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 interestsRepository.getInterestsList().onEach {
-                    _interests.postValue(it)
+                    val edited = it.map {interest ->
+                        interest to (selectedList.find {
+                            it.name == interest.name
+                        } != null)
+                    }
+                    _interests.postValue(HashMap(edited.toMap()))
                 }.launchIn(viewModelScope)
+
             } catch (ex: Throwable) {
                 ex.printStackTrace()
             } finally {
@@ -45,21 +56,33 @@ constructor(
 
     fun interestSelected(interest: Interest) {
         interestsCounter.set(interestsCounter.get() + 1)
-        CoroutineScope(Dispatchers.IO).launch {
-            interestsRepository.save(interest)
-        }
+        selectedList.add(interest)
+        val selected =
+            App.instance?.applicationContext?.resources?.getString(R.string.interests_counter)
+        val items = App.instance?.applicationContext?.resources?.getString(R.string.items)
+        counterString.set("$selected ${interestsCounter.get()} $items")
     }
 
     fun interestDisabled(interest: Interest) {
         if (interestsCounter.get() != 0) {
             interestsCounter.set(interestsCounter.get() - 1)
-            CoroutineScope(Dispatchers.IO).launch {
-                interestsRepository.delete(interest)
-            }
+            selectedList.remove(interest)
+            val selected =
+                App.instance?.applicationContext?.resources?.getString(R.string.interests_counter)
+            val items = App.instance?.applicationContext?.resources?.getString(R.string.items)
+            counterString.set("$selected ${interestsCounter.get()} $items")
         }
     }
 
     fun refresh() {
         loadData()
+    }
+
+    fun saveSelected() {
+        if (selectedList.size > 0) {
+            CoroutineScope(Dispatchers.IO).launch {
+                interestsRepository.save(selectedList)
+            }
+        }
     }
 }

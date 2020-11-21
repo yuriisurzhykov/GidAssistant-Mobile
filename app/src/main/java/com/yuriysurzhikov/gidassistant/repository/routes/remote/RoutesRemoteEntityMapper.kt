@@ -24,11 +24,11 @@ class RoutesRemoteEntityMapper @Inject constructor(): EntityMapper<Route, RouteR
         )
     }
 
-    fun mapListFromEntity(entities: List<Route>): List<RouteRetrofitEntity> {
-        return entities.map { mapFromEntity(it) }
-    }
-
     override fun mapListToEntity(domainModels: List<RouteRetrofitEntity>): List<Route> {
         return domainModels.map { mapToEntity(it) }
+    }
+
+    override fun mapListFromEntity(entities: List<Route>): List<RouteRetrofitEntity> {
+        return entities.map { mapFromEntity(it) }
     }
 }

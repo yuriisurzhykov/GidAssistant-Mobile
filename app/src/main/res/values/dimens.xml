@@ -7,4 +7,6 @@
     <dimen name="onboarding_text_margin">20dp</dimen>
     <dimen name="onboarding_next_margin">20dp</dimen>
     <dimen name="small_padding">8dp</dimen>
+    <dimen name="large_marding">50dp</dimen>
+    <dimen name="navigation_size">55dp</dimen>
 </resources>

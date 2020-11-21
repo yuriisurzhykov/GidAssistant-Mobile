@@ -1,9 +1,13 @@
 package com.yuriysurzhikov.gidassistant.utils.permissions
 
 import android.Manifest
+import android.content.Intent
+import android.net.Uri
+import android.provider.Settings
 import android.widget.Toast
 import com.yuriysurzhikov.gidassistant.App
 import com.yuriysurzhikov.gidassistant.R
+import com.yuriysurzhikov.gidassistant.utils.CommonUtils
 
 sealed class PermissionsType(val permissions: Array<String>,
                              val requestCode: Int) {

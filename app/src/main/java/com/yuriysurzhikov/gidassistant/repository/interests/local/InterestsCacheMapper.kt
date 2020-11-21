@@ -16,4 +16,8 @@ class InterestsCacheMapper @Inject constructor(): EntityMapper<Interest, Interes
     override fun mapListToEntity(domainModels: List<InterestCache>): List<Interest> {
         return domainModels.map { mapToEntity(it) }
     }
+
+    override fun mapListFromEntity(entities: List<Interest>): List<InterestCache> {
+        return entities.map { mapFromEntity(it) }
+    }
 }

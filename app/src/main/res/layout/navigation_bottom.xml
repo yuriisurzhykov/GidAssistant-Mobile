@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <!--<data>
+        <variable
+            name="listener"
+            type="com.yuriysurzhikov.gidassistant.ui.BottomNavigationListener" />
+    </data>-->
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="?app_bottomNavigationSize"
+        android:background="@drawable/navigation_drawable"
+        android:weightSum="3"
+        android:gravity="bottom">
+        
+        <TextView
+            android:id="@+id/route"
+            style="@style/TextAppearance.GidAssistant.NavigationText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/routes"/>
+
+        <TextView
+            android:id="@+id/best"
+            style="@style/TextAppearance.GidAssistant.NavigationText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/best"/>
+
+        <TextView
+            android:id="@+id/profile"
+            style="@style/TextAppearance.GidAssistant.NavigationText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/profile"/>
+
+    </LinearLayout>
+</layout>

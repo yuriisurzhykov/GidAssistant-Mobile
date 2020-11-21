@@ -10,23 +10,20 @@ import com.yuriysurzhikov.gidassistant.ui.onboarding.OnBoarding
 import com.yuriysurzhikov.gidassistant.ui.onboarding.permissions.PermissionsOnBoardingFragment
 import com.yuriysurzhikov.gidassistant.ui.onboarding.welcome.WelcomeOnBoardingFragment
 import com.yuriysurzhikov.gidassistant.ui.AbstractNavigationActivity
+import com.yuriysurzhikov.gidassistant.utils.RunUtils
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SplashScreen: AppCompatActivity() {
 
-    private val viewModel: SplashViewModel by viewModels()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.init(this)
-        viewModel.isFirstRun.observe(this, Observer {
-            if (it != null && it) {
-                startOnBoarding()
-            } else if(it != null && !it) {
-                startMainActivity()
-            }
-        })
+        val firstRun = RunUtils.isFirstRun(this)
+        if (firstRun) {
+            startOnBoarding()
+        } else {
+            startMainActivity()
+        }
     }
 
     private fun startOnBoarding() {

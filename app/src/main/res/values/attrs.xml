@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <attr name="app_toolbarStyle" format="reference"/>
-    <attr name="onboardingBackgroundColor"/>
+    <attr name="onboardingBackgroundColor" format="color"/>
+    <attr name="app_bottomNavigationSize" format="dimension"/>
 </resources>

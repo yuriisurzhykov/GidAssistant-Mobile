@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.onboarding.OnBoardingActivity" />
-        <activity android:name=".utils.permissions.PermissionsProvider" />
+        <activity android:name="com.android.packageinstaller.permission.ui.ManagePermissionsActivity" />
     </application>
 
 </manifest>

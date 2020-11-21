@@ -16,7 +16,7 @@ object OnBoarding {
     }
 
     interface OnBoardingListener {
-        fun onNextClick(position: Int, pagerAdapter: FragmentStatePagerAdapter)
+        fun onNextClick(position: Int = 0, pagerAdapter: FragmentStatePagerAdapter)
         fun onSkipClick()
         fun onFinishClick()
     }

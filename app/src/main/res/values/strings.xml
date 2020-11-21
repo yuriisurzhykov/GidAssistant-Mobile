@@ -20,4 +20,8 @@
     <string name="read_storage_declined">Location permissions was declined!</string>
     <string name="write_storage_granted">Location permissions was granted!</string>
     <string name="write_storage_declined">Location permissions was declined!</string>
+    <string name="interests_counter">You select</string>
+    <string name="items">items</string>
+    <string name="best">Best for you</string>
+    <string name="profile">Profile</string>
 </resources>

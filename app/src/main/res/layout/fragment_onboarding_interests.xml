@@ -4,6 +4,10 @@
 
     <data>
         <import type="android.view.View"/>
+
+        <variable
+            name="errorMessage"
+            type="String" />
         <variable
             name="viewModel"
             type="com.yuriysurzhikov.gidassistant.ui.onboarding.interests.InterestsViewModel" />
@@ -37,6 +41,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:visibility="@{viewModel.loading ? View.GONE : View.VISIBLE}" />
+
+        <TextView
+            android:id="@+id/interests_count"
+            style="@style/OnBoarding.Description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="@dimen/large_marding"
+            android:text="@{viewModel.counterString}"/>
 
         <ProgressBar
             android:id="@+id/progress_circular"

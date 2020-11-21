@@ -14,7 +14,6 @@ class SplashViewModel
 @ViewModelInject constructor() : ViewModel() {
 
     val isFirstRun = MutableLiveData<Boolean>()
-    val loading = ObservableField(true)
 
     fun init(context: Context) {
         CoroutineScope(Dispatchers.IO).launch {

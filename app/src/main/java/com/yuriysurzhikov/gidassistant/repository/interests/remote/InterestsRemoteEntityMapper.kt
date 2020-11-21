@@ -21,4 +21,8 @@ class InterestsRemoteEntityMapper @Inject constructor(): EntityMapper<Interest, 
         return domainModels.map { mapToEntity(it) }
     }
 
+    override fun mapListFromEntity(entities: List<Interest>): List<InterestRetrofitEntity> {
+        return entities.map { mapFromEntity(it) }
+    }
+
 }

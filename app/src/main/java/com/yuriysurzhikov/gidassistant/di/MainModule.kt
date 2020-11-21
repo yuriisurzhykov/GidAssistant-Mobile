@@ -3,6 +3,8 @@ package com.yuriysurzhikov.gidassistant.di
 import com.yuriysurzhikov.gidassistant.repository.city.CityRepository
 import com.yuriysurzhikov.gidassistant.repository.interests.remote.InterestsNetworkService
 import com.yuriysurzhikov.gidassistant.repository.interests.InterestsRepository
+import com.yuriysurzhikov.gidassistant.repository.interests.local.InterestsCacheMapper
+import com.yuriysurzhikov.gidassistant.repository.interests.local.InterestsDao
 import com.yuriysurzhikov.gidassistant.repository.interests.remote.InterestsRemoteEntityMapper
 import com.yuriysurzhikov.gidassistant.repository.places.PlacesRepository
 import com.yuriysurzhikov.gidassistant.repository.routes.RouteRepository
@@ -20,9 +22,11 @@ object MainModule {
     @Provides
     @Singleton
     fun provideInterestsRepository(interestsNetworkService: InterestsNetworkService,
-                                   interestsRemoteEntityMapper: InterestsRemoteEntityMapper
+                                   interestsRemoteEntityMapper: InterestsRemoteEntityMapper,
+                                   interestsCacheMapper: InterestsCacheMapper,
+                                   interestsDao: InterestsDao
     ): InterestsRepository {
-        return InterestsRepository(interestsNetworkService, interestsRemoteEntityMapper)
+        return InterestsRepository(interestsNetworkService, interestsRemoteEntityMapper, interestsCacheMapper, interestsDao)
     }
 
     @Provides

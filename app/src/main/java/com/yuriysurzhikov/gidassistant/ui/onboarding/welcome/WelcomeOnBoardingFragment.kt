@@ -23,6 +23,15 @@ class WelcomeOnBoardingFragment: OnBoardingFragment() {
         return binding.root
     }
 
+    override fun onFinish() {
+        // do nothing
+    }
+
+    override fun onCurrentFinish(): Boolean {
+        // do nothing
+        return true
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.title = resources.getString(R.string.welcome_title)

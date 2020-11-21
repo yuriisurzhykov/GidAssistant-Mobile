@@ -31,4 +31,8 @@ class CityRemoteEntityMapper @Inject constructor() : EntityMapper<City, CityRetr
     override fun mapListToEntity(domainModels: List<CityRetrofitEntity>): List<City> {
         return domainModels.map { mapToEntity(it) }
     }
+
+    override fun mapListFromEntity(entities: List<City>): List<CityRetrofitEntity> {
+        return entities.map { mapFromEntity(it) }
+    }
 }

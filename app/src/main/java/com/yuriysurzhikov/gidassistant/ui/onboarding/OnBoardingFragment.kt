@@ -7,4 +7,7 @@ abstract class OnBoardingFragment: Fragment(), IRefreshableFragment {
 
     var TAG: String? = null
     var mTitle: String? = null
+
+    abstract fun onFinish()
+    abstract fun onCurrentFinish(): Boolean
 }

@@ -33,4 +33,8 @@ class PlacesRemoteEntityMapper @Inject constructor(): EntityMapper<Place, PlaceR
     override fun mapListToEntity(domainModels: List<PlaceRetrofitEntity>): List<Place> {
         return domainModels.map { mapToEntity(it) }
     }
+
+    override fun mapListFromEntity(entities: List<Place>): List<PlaceRetrofitEntity> {
+        return entities.map { mapFromEntity(it) }
+    }
 }

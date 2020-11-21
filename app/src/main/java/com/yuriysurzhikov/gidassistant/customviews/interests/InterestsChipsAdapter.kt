@@ -14,14 +14,14 @@ class InterestsChipsAdapter(val context: Context?) {
 
     private val listInterests = mutableListOf<Interest>()
 
-    fun addInterest(interest: Interest) {
+    fun addInterest(interest: Map.Entry<Interest, Boolean>) {
         if(chipGroup != null) {
-            listInterests.add(interest)
+            listInterests.add(interest.key)
             chipGroup?.addView(createChip(interest))
         }
     }
 
-    fun apply(list: List<Interest>) {
+    fun apply(list: HashMap<Interest, Boolean>) {
         listInterests.clear()
         chipGroup?.removeAllViewsInLayout()
         list.forEach {
@@ -29,16 +29,17 @@ class InterestsChipsAdapter(val context: Context?) {
         }
     }
 
-    private fun createChip(interest: Interest): Chip {
+    private fun createChip(interest: Map.Entry<Interest, Boolean>): Chip {
         val chip = LayoutInflater.from(context).inflate(R.layout.chip_layout, chipGroup, false) as Chip
-        chip.text = interest.name
+        chip.text = interest.key.name
         chip.isCheckable = true
         chip.isClickable = true
+        chip.isChecked = interest.value
         chip.setOnCheckedChangeListener { view, isChecked ->
             if(isChecked)
-                onInterestsStateCallback?.onSelected(view, interest)
+                onInterestsStateCallback?.onSelected(view, interest.key)
             else
-                onInterestsStateCallback?.onDisabled(view, interest)
+                onInterestsStateCallback?.onDisabled(view, interest.key)
         }
         return chip
     }

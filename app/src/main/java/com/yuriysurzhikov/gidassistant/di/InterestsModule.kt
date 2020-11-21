@@ -1,5 +1,7 @@
 package com.yuriysurzhikov.gidassistant.di
 
+import com.yuriysurzhikov.gidassistant.repository.interests.local.InterestsDao
+import com.yuriysurzhikov.gidassistant.repository.interests.local.InterestsDatabase
 import com.yuriysurzhikov.gidassistant.repository.interests.remote.InterestsNetworkService
 import dagger.Module
 import dagger.Provides
@@ -18,5 +20,11 @@ class InterestsModule {
         return retrofit
             .build()
             .create(InterestsNetworkService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideInterestsDao(interestsDatabase: InterestsDatabase): InterestsDao {
+        return interestsDatabase.interestsDao()
     }
 }

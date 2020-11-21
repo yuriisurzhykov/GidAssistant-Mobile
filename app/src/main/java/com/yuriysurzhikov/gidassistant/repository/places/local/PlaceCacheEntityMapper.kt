@@ -26,4 +26,8 @@ class PlaceCacheEntityMapper @Inject constructor(): EntityMapper<Place, PlaceCac
         return domainModels.map { mapToEntity(it) }
     }
 
+    override fun mapListFromEntity(entities: List<Place>): List<PlaceCacheEntity> {
+        return entities.map { mapFromEntity(it) }
+    }
+
 }

@@ -13,13 +13,13 @@ import com.yuriysurzhikov.gidassistant.ui.onboarding.permissions.PermissionsOnBo
 import com.yuriysurzhikov.gidassistant.ui.onboarding.welcome.WelcomeOnBoardingFragment
 import com.yuriysurzhikov.gidassistant.databinding.ActivityOnboardingBinding
 import com.yuriysurzhikov.gidassistant.ui.AbstractNavigationActivity
+import com.yuriysurzhikov.gidassistant.utils.RunUtils
 import com.yuriysurzhikov.gidassistant.utils.setGone
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class OnBoardingActivity: AppCompatActivity() {
 
-    private val viewModel: OnBoardingViewModel by viewModels()
     private lateinit var binding: ActivityOnboardingBinding
     private lateinit var pagerAdapter: OnBoardingViewPager
 
@@ -53,13 +53,13 @@ class OnBoardingActivity: AppCompatActivity() {
                     com.yuriysurzhikov.gidassistant.utils.setVisible(binding.skip)
                     binding.nextText.text = resources.getString(R.string.next_button)
                     binding.next.setOnClickListener {
-                        onBoardingCallback.onNextClick(position + 1, pagerAdapter)
+                        onBoardingCallback.onNextClick(position, pagerAdapter)
                     }
                 }
             }
         })
         binding.next.setOnClickListener {
-            onBoardingCallback.onNextClick(1, pagerAdapter)
+            onBoardingCallback.onNextClick(0, pagerAdapter)
         }
         binding.skip.setOnClickListener {
             onBoardingCallback.onSkipClick()
@@ -70,7 +70,10 @@ class OnBoardingActivity: AppCompatActivity() {
     val onBoardingCallback = object:
         OnBoarding.OnBoardingListener {
         override fun onNextClick(position: Int, pagerAdapter: FragmentStatePagerAdapter) {
-            binding.viewPager.currentItem = position
+            if(pagerAdapter is OnBoardingViewPager) {
+                pagerAdapter.nextClick(position)
+            }
+            binding.viewPager.currentItem = position + 1
         }
 
         override fun onSkipClick() {
@@ -78,6 +81,7 @@ class OnBoardingActivity: AppCompatActivity() {
         }
 
         override fun onFinishClick() {
+            RunUtils.setWasFirstRun(applicationContext)
             val intent = Intent(applicationContext, AbstractNavigationActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)

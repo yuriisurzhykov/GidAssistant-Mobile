@@ -31,8 +31,8 @@ class OnBoardingViewPager(fm: FragmentManager): FragmentStatePagerAdapter(fm, BE
         notifyDataSetChanged()
     }
 
-    override fun showNext() {
-
+    override fun nextClick(position: Int): Boolean {
+        return listOfPages[position].onCurrentFinish()
     }
 
     override fun refresh(position: Int) {

@@ -7,18 +7,19 @@ object RunUtils {
     @JvmStatic
     fun isFirstRun(context: Context): Boolean {
         val prefs = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
-        return prefs.getBoolean(FIRST_RUN, true)
+        return !prefs.getBoolean(WAS_FIRST_RUN, false)
     }
 
     @JvmStatic
-    fun setFirstRun(context: Context, isFirstRun: Boolean) {
+    fun setWasFirstRun(context: Context) {
         val prefs = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
         prefs
             .edit()
-            .putBoolean(FIRST_RUN, isFirstRun)
+            .remove(WAS_FIRST_RUN)
+            .putBoolean(WAS_FIRST_RUN, true)
             .apply()
     }
 
-    private const val FIRST_RUN = "first_run"
-    private const val PREFERENCES_NAME = "first_run"
+    private const val WAS_FIRST_RUN = "first_run"
+    private const val PREFERENCES_NAME = "was_first_run"
 }

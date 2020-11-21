@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -33,7 +34,6 @@ class InterestsOnBoardingFragment: OnBoardingFragment() {
         binding = FragmentOnboardingInterestsBinding.inflate(inflater, container, false)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getView()?.let {
@@ -57,6 +57,17 @@ class InterestsOnBoardingFragment: OnBoardingFragment() {
             viewModel.interestDisabled(interest)
         }
     }
+
+    override fun onFinish() {
+        viewModel.saveSelected()
+    }
+
+    override fun onCurrentFinish(): Boolean {
+        viewModel.saveSelected()
+        Toast.makeText(context, "${viewModel.interestsCounter.get()}", Toast.LENGTH_LONG).show()
+        return true
+    }
+
 
     override fun refresh() {
         viewModel.refresh()
