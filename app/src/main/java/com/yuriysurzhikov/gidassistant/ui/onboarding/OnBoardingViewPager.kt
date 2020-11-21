@@ -1,35 +1,11 @@
 package com.yuriysurzhikov.gidassistant.ui.onboarding
 
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
+import com.yuriysurzhikov.gidassistant.ui.AbstractNavigationAdapter
 
-class OnBoardingViewPager(fm: FragmentManager): FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT),
-    IOnBoarding {
+class OnBoardingViewPager(fm: FragmentManager): AbstractNavigationAdapter(fm), IOnBoarding {
 
     private val listOfPages = mutableListOf<OnBoardingFragment>()
-
-    override fun getItem(position: Int): Fragment {
-        return listOfPages[position]
-    }
-
-    override fun getCount() = listOfPages.size
-
-    override fun addScreen(fragment: OnBoardingFragment, TAG: String?) {
-        listOfPages.add(fragment)
-        notifyDataSetChanged()
-    }
-
-    override fun getPageTitle(position: Int): CharSequence? {
-        return listOfPages[position].mTitle
-    }
-
-    override fun removeScreen(TAG: String?) {
-        listOfPages.removeAll {
-            it.TAG == TAG
-        }
-        notifyDataSetChanged()
-    }
 
     override fun nextClick(position: Int): Boolean {
         return listOfPages[position].onCurrentFinish()

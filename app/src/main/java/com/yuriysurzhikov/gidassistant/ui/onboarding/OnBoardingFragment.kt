@@ -1,13 +1,8 @@
 package com.yuriysurzhikov.gidassistant.ui.onboarding
 
-import androidx.fragment.app.Fragment
-import com.yuriysurzhikov.gidassistant.ui.IRefreshableFragment
+import com.yuriysurzhikov.gidassistant.ui.AbstractFragment
 
-abstract class OnBoardingFragment: Fragment(), IRefreshableFragment {
-
-    var TAG: String? = null
-    var mTitle: String? = null
-
+abstract class OnBoardingFragment: AbstractFragment() {
     abstract fun onFinish()
     abstract fun onCurrentFinish(): Boolean
 }
