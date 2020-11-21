@@ -6,18 +6,35 @@ import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
-class PermissionsProvider<T: PermissionsType> constructor(val context: Context): IPermissionsProvider<T> {
+class PermissionsProvider<T: PermissionsType>
+constructor(
+    val context: Context,
+    val callback: IPermissionsCallback<T>,
+    private val type: T): Activity(), IPermissionsProvider<T> {
 
-    override fun requestPermissions(
-        activity: Activity,
-        type: PermissionsType,
-        callback: IPermissionsCallback<T>
-    ) {
+    override fun requestPermissions() {
         if(ContextCompat.checkSelfPermission(context, type.permissions[0]) == PackageManager.PERMISSION_GRANTED) {
-            callback.onGranted(type.requestCode)
+            callback.onGranted(type)
         } else {
-            ActivityCompat.requestPermissions(activity, arrayOf(type.permissions[0]), type.requestCode)
+            ActivityCompat.requestPermissions(this, type.permissions, type.requestCode)
         }
     }
 
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        if(requestCode == type.requestCode && grantResults.isNotEmpty()) {
+            if(grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                callback.onGranted(type)
+            } else {
+                callback.onDecline(type)
+            }
+        }
+    }
+
+    companion object {
+        val BUNDLE_ARGS = "permissions_args"
+    }
 }

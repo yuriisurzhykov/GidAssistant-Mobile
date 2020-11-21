@@ -1,23 +1,27 @@
 package com.yuriysurzhikov.gidassistant.ui.onboarding.permissions
 
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import com.google.gson.Gson
 import com.yuriysurzhikov.gidassistant.R
 import com.yuriysurzhikov.gidassistant.ui.onboarding.OnBoardingFragment
 import com.yuriysurzhikov.gidassistant.databinding.FragmentOnboardingPermissionsBinding
 import com.yuriysurzhikov.gidassistant.ui.onboarding.OnBoardingActivity
 import com.yuriysurzhikov.gidassistant.utils.permissions.IPermissionsCallback
+import com.yuriysurzhikov.gidassistant.utils.permissions.IPermissionsProvider
 import com.yuriysurzhikov.gidassistant.utils.permissions.PermissionsProvider
 import com.yuriysurzhikov.gidassistant.utils.permissions.PermissionsType
 import com.yuriysurzhikov.gidassistant.utils.permissions.PermissionsType.LocationPermissions
 import java.security.Permission
 
 class PermissionsOnBoardingFragment:
-    OnBoardingFragment() {
+    OnBoardingFragment(), IPermissionsProvider<LocationPermissions>{
 
     private lateinit var binding: FragmentOnboardingPermissionsBinding
     private val viewModel: PermissionsViewModel by viewModels()
@@ -35,8 +39,22 @@ class PermissionsOnBoardingFragment:
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.permssionsImage.setOnClickListener {
-            PermissionsProvider<LocationPermissions>(requireContext())
-                .requestPermissions(requireActivity(), LocationPermissions, permissionsResultCallback)
+            requestPermissions()
+        }
+    }
+
+    override fun refresh() {
+        viewModel.refresh()
+    }
+
+    private val permissionsResultCallback = object: IPermissionsCallback<LocationPermissions> {
+        override fun onGranted(type: LocationPermissions) {
+            LocationPermissions.showGrantedMessage()
+            (activity as OnBoardingActivity).onBoardingCallback.onFinishClick()
+        }
+
+        override fun onDecline(type: LocationPermissions) {
+            LocationPermissions.showDeclinedMessage()
         }
     }
 
@@ -45,25 +63,22 @@ class PermissionsOnBoardingFragment:
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
-        if(requestCode == LocationPermissions.requestCode && grantResults.isNotEmpty()) {
-            if(grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                (activity as OnBoardingActivity).onBoardingCallback.onFinishClick()
+        when(requestCode) {
+            LocationPermissions.requestCode -> {
+                if(grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    permissionsResultCallback.onGranted(LocationPermissions)
+                } else {
+                    permissionsResultCallback.onDecline(LocationPermissions)
+                }
             }
         }
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
-    override fun refresh() {
-        viewModel.refresh()
-    }
-
-    private val permissionsResultCallback = object: IPermissionsCallback<LocationPermissions> {
-        override fun onGranted(requestCode: Int) {
-            LocationPermissions.showGrantedMessage()
-        }
-
-        override fun onDecline(requestCode: Int) {
-            LocationPermissions.showDeclinedMessage()
+    override fun requestPermissions() {
+        if(ContextCompat.checkSelfPermission(context!!, LocationPermissions.permissions[0]) == PackageManager.PERMISSION_GRANTED) {
+            permissionsResultCallback.onGranted(LocationPermissions)
+        } else {
+            requestPermissions(LocationPermissions.permissions, LocationPermissions.requestCode)
         }
     }
 }
