@@ -75,18 +75,8 @@ class AbstractNavigationActivity:
             .commit()
     }
 
-    override fun onNavigationChanged(view: View) {
-        when(view.id) {
-            R.id.route -> {
-
-            }
-            R.id.best -> {
-
-            }
-            R.id.profile -> {
-
-            }
-        }
+    override fun onNavigationChanged(position: Int) {
+        binding.mainContainer.currentItem = position
     }
 
 

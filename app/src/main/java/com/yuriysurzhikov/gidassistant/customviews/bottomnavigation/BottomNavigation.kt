@@ -27,30 +27,30 @@ class BottomNavigation : LinearLayout, SwipeableNavigation {
             .inflate(R.layout.navigation_bottom, this, true) as LinearLayout
         for (view in layout.children) {
             if (view is LinearLayout) {
-                view.children.iterator().forEach { text ->
+                for((position, text) in view.children.withIndex()) {
                     if (text is TextView) {
-                        text.setOnClickListener {
-                            invalidateViews(text)
-                        }
                         childList.add(text)
+                        text.setOnClickListener {
+                            invalidateViews(position)
+                        }
                     }
                 }
             }
         }
         if (childList.isNotEmpty())
-            invalidateViews(childList[0])
+            invalidateViews(0)
     }
 
-    private fun invalidateViews(clicked: TextView) {
+    private fun invalidateViews(position: Int) {
         childList.forEach {
             it.setTextColor(resources.getColor(R.color.gidassistant_gray))
         }
-        clicked.setTextColor(resources.getColor(R.color.gidassistant_accent))
-        navigationListener?.onNavigationChanged(clicked)
+        childList[position].setTextColor(resources.getColor(R.color.gidassistant_accent))
+        navigationListener?.onNavigationChanged(position)
     }
 
     override fun onPageSwiped(position: Int) {
         if (position < childList.size)
-            invalidateViews(childList[position])
+            invalidateViews(position)
     }
 }
