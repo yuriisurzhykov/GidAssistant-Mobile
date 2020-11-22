@@ -27,6 +27,11 @@ constructor(
         get() = _places
 
     private val _places = MutableLiveData<List<Place>>()
+    private val selectedPlaces = mutableListOf<Place>()
+
+    fun refresh() {
+        loadPlaces()
+    }
 
     fun loadPlaces() {
         CoroutineScope(Dispatchers.IO).launch {
@@ -47,4 +52,19 @@ constructor(
         }
     }
 
+    fun selectToRoute(position: Int) {
+        selectedPlaces.add(_places.value!![position])
+        validateRouteButtonVisibility()
+    }
+
+    fun deselectFromRoute(position: Int) {
+        selectedPlaces.removeAll {
+            it == _places.value!![position]
+        }
+        validateRouteButtonVisibility()
+    }
+
+    private fun validateRouteButtonVisibility() {
+        canCreateRoute.set(selectedPlaces.isNotEmpty())
+    }
 }

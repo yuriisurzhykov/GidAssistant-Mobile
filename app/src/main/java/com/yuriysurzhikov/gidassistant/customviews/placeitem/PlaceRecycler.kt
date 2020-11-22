@@ -31,6 +31,7 @@ constructor(var placeList: MutableList<Place>): RecyclerView.Adapter<PlaceItem>(
     private val thisPlaceSelectListener = object: PlaceSelectListener {
         override fun onSelectChanged(view: View, position: Int, isChecked: Boolean) {
             if(checkingState) {
+                placeSelectListener?.onSelectChanged(view, position, isChecked)
                 if(isChecked) {
                     checkedCount += 1
                 } else {
@@ -41,7 +42,6 @@ constructor(var placeList: MutableList<Place>): RecyclerView.Adapter<PlaceItem>(
                     firstCheckedPosition = -1
                     notifyDataSetChanged()
                 }
-                placeSelectListener?.onSelectChanged(view, position, isChecked)
             }
         }
     }

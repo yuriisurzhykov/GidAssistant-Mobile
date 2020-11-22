@@ -23,7 +23,11 @@ class BestFragment: AbstractFragment() {
 
     private val placeSelectListener = object: PlaceSelectListener {
         override fun onSelectChanged(view: View, position: Int, isChecked: Boolean) {
-
+            if(isChecked){
+                viewModel.selectToRoute(position)
+            } else {
+                viewModel.deselectFromRoute(position)
+            }
         }
     }
 
@@ -40,6 +44,7 @@ class BestFragment: AbstractFragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel = viewModel
         placeAdapter = PlaceRecycler(emptyList<Place>().toMutableList())
+        placeAdapter?.placeSelectListener = placeSelectListener
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.adapter = placeAdapter
         viewModel.loadPlaces()
@@ -49,6 +54,6 @@ class BestFragment: AbstractFragment() {
     }
 
     override fun refresh() {
-        viewModel.loadPlaces()
+        viewModel.refresh()
     }
 }
