@@ -3,6 +3,7 @@ package com.yuriysurzhikov.gidassistant.ui
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
@@ -52,10 +53,6 @@ class AbstractNavigationActivity :
         binding.mainContainer.adapter = navigationAdapter
     }
 
-    fun onClick(view: View) {
-        openInterestsFragment(getString(R.string.interests_fragment))
-    }
-
     override fun openInterestsFragment(title: String) {
         val fragment = InterestsFragment()
         openFragment(fragment, InterestsFragment.TAG)
@@ -70,10 +67,6 @@ class AbstractNavigationActivity :
         if (supportFragmentManager.backStackEntryCount > 1) {
             invalidateOptionsMenu()
         }
-    }
-
-    override fun invalidateOptionsMenu() {
-        super.invalidateOptionsMenu()
     }
 
     override fun clearCurrentFromStack() {
@@ -91,8 +84,12 @@ class AbstractNavigationActivity :
     }
 
     override fun onNavigationChanged(position: Int) {
-        if (position < binding.mainContainer.childCount)
+        if (position < navigationAdapter.count && position >= 0) {
             binding.mainContainer.currentItem = position
+            /*if(binding.mainContainer[position] is IRefreshableFragment) {
+                (binding.mainContainer[position] as IRefreshableFragment).refresh()
+            }*/
+        }
     }
 
 

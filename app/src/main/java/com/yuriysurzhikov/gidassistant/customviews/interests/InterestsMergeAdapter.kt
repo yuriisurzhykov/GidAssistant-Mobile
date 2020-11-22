@@ -7,40 +7,41 @@ import com.yuriysurzhikov.gidassistant.model.Interest
 
 class InterestsMergeAdapter(val context: Context?) {
 
-    var userInterestsAdapter: InterestsEntryChipAdapter? = null
-    set(value) {
-        field = value
-        field?.interestsCloseCallback = object: InterestsCloseCallback {
-            override fun onInterestClose(view: View, interest: Interest) {
-
-            }
-        }
-    }
+    val userInterestsAdapter = InterestsEntryChipAdapter(context)
+    val remoteInterestsAdapter = InterestsClickableAdapter(context)
     var userInterestsChipGroup: ChipGroup? = null
-    var remoteInterestsAdapter: InterestsChipsAdapter? = null
-    set(value) {
-        field = value
-        field?.onInterestsStateCallback = object: OnInterestsStateCallback {
-            override fun onSelected(view: View, interest: Interest) {
-                value?.onInterestsStateCallback?.onSelected(view, interest)
-            }
-
-            override fun onDisabled(view: View, interest: Interest) {
-                value?.onInterestsStateCallback?.onDisabled(view, interest)
-            }
+        set(value) {
+            field = value
+            userInterestsAdapter.chipGroup = value
         }
-    }
+    var remoteInterestChipGroup: ChipGroup? = null
+        set(value) {
+            field = value
+            remoteInterestsAdapter.chipGroup = value
+        }
+    var interestsCloseCallback: InterestsCloseCallback? = null
+        set(value) {
+            field = value
+            userInterestsAdapter.interestsCloseCallback = value
+        }
+    var interestsStateCallback: InterestsClickCallback? = null
+        set(value) {
+            field = value
+            remoteInterestsAdapter.onInterestsStateCallback = value
+        }
 
     private val userInterests = mutableListOf<Interest>()
     private val remoteInterests = mutableListOf<Interest>()
 
-    fun addUserInterest(interest: Interest) {
-        userInterestsAdapter?.addInterest(interest)
+    fun updateUserList(interests: List<Interest>?) {
+        interests?.let {
+            userInterestsAdapter.apply(it)
+        }
     }
 
-    fun addUserInterests(interests: List<Interest>) {
-        interests.forEach {
-            addUserInterest(it)
+    fun updateRemoteList(interests: List<Interest>?) {
+        interests?.let {
+            remoteInterestsAdapter.apply(it)
         }
     }
 }

@@ -11,8 +11,6 @@ import com.yuriysurzhikov.gidassistant.model.Interest
 import com.yuriysurzhikov.gidassistant.repository.interests.InterestsRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
 class InterestsViewModel
@@ -37,15 +35,14 @@ constructor(
         loading.set(true)
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                interestsRepository.getInterestsList().onEach {
-                    val edited = it.map {interest ->
+                val remoteResult = interestsRepository
+                    .getRemoteInterests()
+                    .map { interest ->
                         interest to (selectedList.find {
                             it.name == interest.name
                         } != null)
                     }
-                    _interests.postValue(HashMap(edited.toMap()))
-                }.launchIn(viewModelScope)
-
+                _interests.postValue(HashMap(remoteResult.toMap()))
             } catch (ex: Throwable) {
                 ex.printStackTrace()
             } finally {

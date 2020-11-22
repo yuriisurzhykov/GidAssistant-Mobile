@@ -17,13 +17,13 @@ constructor(
     val interestsDao: InterestsDao
 ) {
 
-    suspend fun getInterestsList() = flow {
-        try {
+    suspend fun getRemoteInterests(): List<Interest> {
+        return try {
             val resultFromServer = interestsNetworkService.getInterestsList()
             val resultForShowing = interestsRemoteEntityMapper.mapListToEntity(resultFromServer)
-            emit(resultForShowing)
+            resultForShowing
         } catch (e: Exception) {
-            emit(emptyList())
+            emptyList()
         }
     }
 

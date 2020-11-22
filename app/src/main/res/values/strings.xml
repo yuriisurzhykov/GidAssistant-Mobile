@@ -29,4 +29,6 @@
     <string name="select_place_for_route">"Select places for route building "</string>
     <string name="your_interests">Your interests</string>
     <string name="can_be_added">You can add this interests</string>
+    <string name="save">Save changes</string>
+    <string name="cancel">Cancel changes</string>
 </resources>

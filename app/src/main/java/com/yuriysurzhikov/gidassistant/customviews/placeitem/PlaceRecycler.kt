@@ -56,7 +56,7 @@ constructor(var placeList: MutableList<Place>): RecyclerView.Adapter<PlaceItem>(
                 } else {
                     checkedCount -= 1
                 }
-                if(checkedCount == 0) {
+                if(checkedCount <= 0) {
                     checkingState = false
                     notifyDataSetChanged()
                 }
@@ -84,5 +84,11 @@ constructor(var placeList: MutableList<Place>): RecyclerView.Adapter<PlaceItem>(
             placeList.addAll(list)
             notifyDataSetChanged()
         }
+    }
+
+    fun setCreateRoute() {
+        checkingState = false
+        firstCheckedPosition = -1
+        notifyDataSetChanged()
     }
 }

@@ -1,14 +1,11 @@
 package com.yuriysurzhikov.gidassistant.repository.interests.local
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Transaction
+import androidx.room.*
 
 @Dao
 interface InterestsDao {
     @Transaction
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveAll(interests: List<InterestCache>)
 
     @Query("SELECT * FROM interests")

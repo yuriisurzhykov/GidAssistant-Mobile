@@ -10,12 +10,7 @@ import com.yuriysurzhikov.gidassistant.R
 
 class BottomNavigation : LinearLayout, SwipeableNavigation {
 
-    constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(
-        context,
-        attrs,
-        defStyle
-    )
-
+    constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle)
     constructor(context: Context, attrs: AttributeSet) : this(context, attrs, 0)
 
     var navigationListener: NavigationListener? = null

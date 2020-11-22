@@ -52,6 +52,21 @@ constructor(
         }
     }
 
+    fun createRoute() {
+        loading.set(true)
+        CoroutineScope(Dispatchers.IO).launch {
+            try{
+                Thread.sleep(2000)
+            } catch (e: Exception) {
+
+            } finally {
+                loading.set(false)
+                selectedPlaces.clear()
+                validateRouteButtonVisibility()
+            }
+        }
+    }
+
     fun selectToRoute(position: Int) {
         selectedPlaces.add(_places.value!![position])
         validateRouteButtonVisibility()

@@ -7,10 +7,9 @@ import com.google.android.material.chip.ChipGroup
 import com.yuriysurzhikov.gidassistant.R
 import com.yuriysurzhikov.gidassistant.model.Interest
 
-class InterestsEntryChipAdapter(val context: Context?) {
-
+class InterestsClickableAdapter(val context: Context?) {
     var chipGroup: ChipGroup? = null
-    var interestsCloseCallback: InterestsCloseCallback? = null
+    var onInterestsStateCallback: InterestsClickCallback? = null
 
     private val listInterests = mutableListOf<Interest>()
 
@@ -30,10 +29,11 @@ class InterestsEntryChipAdapter(val context: Context?) {
     }
 
     private fun createChip(interest: Interest): Chip {
-        val chip = LayoutInflater.from(context).inflate(R.layout.chip_layout_entry, chipGroup, false) as Chip
+        val chip = LayoutInflater.from(context).inflate(R.layout.chip_layout_default, chipGroup, false) as Chip
         chip.text = interest.name
-        chip.setOnCloseIconClickListener {
-            interestsCloseCallback?.onInterestClose(it, interest)
+        chip.isClickable = true
+        chip.setOnClickListener { view ->
+            onInterestsStateCallback?.onClick(view, interest)
         }
         return chip
     }

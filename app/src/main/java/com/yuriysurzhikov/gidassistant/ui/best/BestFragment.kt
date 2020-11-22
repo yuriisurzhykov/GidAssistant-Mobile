@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.Observable
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,15 +16,15 @@ import com.yuriysurzhikov.gidassistant.ui.AbstractFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class BestFragment: AbstractFragment() {
+class BestFragment : AbstractFragment() {
 
     private lateinit var binding: FragmentBestSuitableBinding
     private val viewModel: BestViewModel by viewModels()
     private var placeAdapter: PlaceRecycler? = null
 
-    private val placeSelectListener = object: PlaceSelectListener {
+    private val placeSelectListener = object : PlaceSelectListener {
         override fun onSelectChanged(view: View, position: Int, isChecked: Boolean) {
-            if(isChecked){
+            if (isChecked) {
                 viewModel.selectToRoute(position)
             } else {
                 viewModel.deselectFromRoute(position)
@@ -42,15 +43,28 @@ class BestFragment: AbstractFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.swipe.setOnRefreshListener {
+            viewModel.refresh()
+        }
         binding.viewModel = viewModel
         placeAdapter = PlaceRecycler(emptyList<Place>().toMutableList())
         placeAdapter?.placeSelectListener = placeSelectListener
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.adapter = placeAdapter
         viewModel.loadPlaces()
+        viewModel.loading.addOnPropertyChangedCallback(object: Observable.OnPropertyChangedCallback() {
+            override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
+                if (!viewModel.loading.get())
+                    binding.swipe.isRefreshing = false
+            }
+        })
         viewModel.places.observe(viewLifecycleOwner, Observer {
             placeAdapter?.update(it)
         })
+        binding.createRoute.setOnClickListener {
+            viewModel.createRoute()
+            placeAdapter?.setCreateRoute()
+        }
     }
 
     override fun refresh() {
