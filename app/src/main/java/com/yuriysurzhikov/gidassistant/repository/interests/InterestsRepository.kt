@@ -45,4 +45,11 @@ constructor(
 
         }
     }
+    suspend fun deleteAll() {
+        try {
+            interestsDao.deleteAll()
+        } catch (e: Exception) {
+
+        }
+    }
 }

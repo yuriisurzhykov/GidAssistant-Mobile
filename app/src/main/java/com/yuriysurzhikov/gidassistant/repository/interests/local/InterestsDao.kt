@@ -10,4 +10,7 @@ interface InterestsDao {
 
     @Query("SELECT * FROM interests")
     suspend fun getAll(): List<InterestCache>
+
+    @Query("DELETE FROM interests")
+    suspend fun deleteAll()
 }

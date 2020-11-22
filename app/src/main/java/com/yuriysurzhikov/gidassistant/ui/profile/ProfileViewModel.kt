@@ -106,10 +106,12 @@ constructor(
         loading.set(true)
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                if (userInterestsSelected.value != null)
+                if (userInterestsSelected.value != null) {
+                    interestsRepository.deleteAll()
                     interestsRepository.save(userInterestsSelected.value!!)
-                wasSaved.set(true)
-                containsChanges.set(false)
+                    wasSaved.set(true)
+                    containsChanges.set(false)
+                }
             } catch (e: Exception) {
             } finally {
                 loading.set(false)
