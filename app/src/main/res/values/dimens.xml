@@ -11,4 +11,5 @@
     <dimen name="navigation_size">55dp</dimen>
     <dimen name="floating_action_button">60dp</dimen>
     <dimen name="status_bar_size">25dp</dimen>
+    <dimen name="title_text_size">20sp</dimen>
 </resources>

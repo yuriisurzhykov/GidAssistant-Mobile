@@ -7,21 +7,21 @@ import com.google.android.material.chip.ChipGroup
 import com.yuriysurzhikov.gidassistant.R
 import com.yuriysurzhikov.gidassistant.model.Interest
 
-class InterestsChipsAdapter(val context: Context?) {
+open class InterestsChipsAdapter(val context: Context?) {
 
     var chipGroup: ChipGroup? = null
     var onInterestsStateCallback: OnInterestsStateCallback? = null
 
     private val listInterests = mutableListOf<Interest>()
 
-    fun addInterest(interest: Map.Entry<Interest, Boolean>) {
+    open fun addInterest(interest: Map.Entry<Interest, Boolean>) {
         if(chipGroup != null) {
             listInterests.add(interest.key)
             chipGroup?.addView(createChip(interest))
         }
     }
 
-    fun apply(list: HashMap<Interest, Boolean>) {
+    open fun apply(list: HashMap<Interest, Boolean>) {
         listInterests.clear()
         chipGroup?.removeAllViewsInLayout()
         list.forEach {
@@ -29,7 +29,7 @@ class InterestsChipsAdapter(val context: Context?) {
         }
     }
 
-    private fun createChip(interest: Map.Entry<Interest, Boolean>): Chip {
+    protected open fun createChip(interest: Map.Entry<Interest, Boolean>): Chip {
         val chip = LayoutInflater.from(context).inflate(R.layout.chip_layout, chipGroup, false) as Chip
         chip.text = interest.key.name
         chip.isCheckable = true

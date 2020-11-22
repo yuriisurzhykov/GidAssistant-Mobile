@@ -11,13 +11,44 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/page_title"
+            style="@style/TextAppearance.GidAssistant.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/large_padding"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:text="PROFILE"/>
+            android:text="@string/your_interests"/>
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/user_interests"
+            style="@style/Widget.GidAssistant.ChipGroup"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/default_padding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/page_title" />
+
+        <TextView
+            android:id="@+id/can_add_text"
+            android:layout_marginTop="@dimen/default_padding"
+            style="@style/TextAppearance.GidAssistant.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/can_be_added"
+            app:layout_constraintTop_toBottomOf="@id/user_interests" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/remote_interests"
+            style="@style/Widget.GidAssistant.ChipGroup"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/default_padding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/can_add_text" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

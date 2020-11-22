@@ -80,6 +80,14 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="Widget.GidAssistant.EntryChip" parent="Widget.MaterialComponents.Chip.Entry">
+        <item name="chipBackgroundColor">@color/gidassistant_chip_neutral</item>
+        <item name="colorPrimary">@color/gidassistant_chip_pressed</item>
+        <item name="colorOnSurface">@color/gidassistant_blue_light</item>
+        <item name="android:textColor">@color/gidassistant_primary_text</item>
+        <item name="android:gravity">center</item>
+    </style>
+
     <style name="Widget.GidAssistant.ChipGroup" parent="Widget.MaterialComponents.ChipGroup">
         <item name="singleLine">false</item>
         <item name="android:singleLine">false</item>

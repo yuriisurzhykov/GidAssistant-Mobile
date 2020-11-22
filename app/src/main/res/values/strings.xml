@@ -27,4 +27,6 @@
     <string name="click_to_open_interests">Click here to open interests</string>
     <string name="create_route">Build route</string>
     <string name="select_place_for_route">"Select places for route building "</string>
+    <string name="your_interests">Your interests</string>
+    <string name="can_be_added">You can add this interests</string>
 </resources>
