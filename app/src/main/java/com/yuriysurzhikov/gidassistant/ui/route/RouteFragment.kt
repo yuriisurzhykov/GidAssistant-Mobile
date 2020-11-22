@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.yuriysurzhikov.gidassistant.databinding.FragmentRouteBuildingBinding
 import com.yuriysurzhikov.gidassistant.ui.AbstractFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RouteFragment: AbstractFragment() {
 
     private lateinit var binding: FragmentRouteBuildingBinding

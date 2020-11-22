@@ -7,6 +7,9 @@ import com.yuriysurzhikov.gidassistant.repository.interests.local.InterestsCache
 import com.yuriysurzhikov.gidassistant.repository.interests.local.InterestsDao
 import com.yuriysurzhikov.gidassistant.repository.interests.remote.InterestsRemoteEntityMapper
 import com.yuriysurzhikov.gidassistant.repository.places.PlacesRepository
+import com.yuriysurzhikov.gidassistant.repository.places.local.PlaceCacheEntityMapper
+import com.yuriysurzhikov.gidassistant.repository.places.remote.PlacesNetworkService
+import com.yuriysurzhikov.gidassistant.repository.places.remote.PlacesRemoteEntityMapper
 import com.yuriysurzhikov.gidassistant.repository.routes.RouteRepository
 import com.yuriysurzhikov.gidassistant.repository.user.UserRepository
 import dagger.Module
@@ -37,8 +40,13 @@ object MainModule {
 
     @Provides
     @Singleton
-    fun providePlacesRepository(): PlacesRepository {
-        return PlacesRepository()
+    fun providePlacesRepository(
+        interestsRepository: InterestsRepository,
+        placesNetworkService: PlacesNetworkService,
+        placeCacheEntityMapper: PlaceCacheEntityMapper,
+        placesRemoteEntityMapper: PlacesRemoteEntityMapper
+    ): PlacesRepository {
+        return PlacesRepository(interestsRepository, placesNetworkService, placeCacheEntityMapper, placesRemoteEntityMapper)
     }
 
     @Provides

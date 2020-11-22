@@ -9,6 +9,7 @@
     <color name="gidassistant_gray">#434343</color>
     <color name="gidassistant_dark_gray">#99000000</color>
     <color name="gidassistant_light_gray">#9090A0</color>
+    <color name="gidassistant_transparent_black">#44000000</color>
 
     <color name="gidassistant_primary">@color/gidassistant_blue</color>
     <color name="gidassistant_primary_light">@color/gidassistant_blue_light</color>

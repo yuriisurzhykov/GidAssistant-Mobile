@@ -5,13 +5,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.yuriysurzhikov.gidassistant.customviews.placeitem.PlaceRecycler
+import com.yuriysurzhikov.gidassistant.customviews.placeitem.PlaceSelectListener
 import com.yuriysurzhikov.gidassistant.databinding.FragmentBestSuitableBinding
+import com.yuriysurzhikov.gidassistant.model.Place
 import com.yuriysurzhikov.gidassistant.ui.AbstractFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class BestFragment: AbstractFragment() {
 
     private lateinit var binding: FragmentBestSuitableBinding
     private val viewModel: BestViewModel by viewModels()
+    private var placeAdapter: PlaceRecycler? = null
+
+    private val placeSelectListener = object: PlaceSelectListener {
+        override fun onSelectChanged(view: View, position: Int, isChecked: Boolean) {
+
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,7 +36,19 @@ class BestFragment: AbstractFragment() {
         return binding.root
     }
 
-    override fun refresh() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.viewModel = viewModel
+        placeAdapter = PlaceRecycler(emptyList<Place>().toMutableList())
+        binding.recyclerView.layoutManager = LinearLayoutManager(context)
+        binding.recyclerView.adapter = placeAdapter
+        viewModel.loadPlaces()
+        viewModel.places.observe(viewLifecycleOwner, Observer {
+            placeAdapter?.update(it)
+        })
+    }
 
+    override fun refresh() {
+        viewModel.loadPlaces()
     }
 }

@@ -3,6 +3,7 @@ package com.yuriysurzhikov.gidassistant.repository.interests
 import com.yuriysurzhikov.gidassistant.model.Interest
 import com.yuriysurzhikov.gidassistant.repository.interests.local.InterestsCacheMapper
 import com.yuriysurzhikov.gidassistant.repository.interests.local.InterestsDao
+import com.yuriysurzhikov.gidassistant.repository.interests.remote.InterestRetrofitEntity
 import com.yuriysurzhikov.gidassistant.repository.interests.remote.InterestsNetworkService
 import com.yuriysurzhikov.gidassistant.repository.interests.remote.InterestsRemoteEntityMapper
 import com.yuriysurzhikov.gidassistant.utils.DataState
@@ -24,6 +25,15 @@ constructor(
         } catch (e: Exception) {
             emit(emptyList())
         }
+    }
+
+    suspend fun getMappedInterests(interests: List<Interest>): List<InterestRetrofitEntity> {
+        return interestsRemoteEntityMapper.mapListFromEntity(interests)
+    }
+
+    suspend fun getSavedInterests(): List<Interest> {
+        val cachedInterests = interestsDao.getAll()
+        return interestsCacheMapper.mapListToEntity(cachedInterests)
     }
 
     suspend fun save(interests: List<Interest>) {
