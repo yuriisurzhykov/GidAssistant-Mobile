@@ -1,5 +1,5 @@
 package com.yuriysurzhikov.gidassistant.customviews.bottomnavigation
 
 interface SwipeableNavigation {
-    fun onPageSwiped(position: Int)
+    fun onPageSwiped(position: Int, needForNavigation: Boolean)
 }

@@ -1,6 +1,5 @@
 package com.yuriysurzhikov.gidassistant.ui.onboarding.permissions
 
-import android.content.ComponentName
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -11,8 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
-import com.google.gson.Gson
-import com.yuriysurzhikov.gidassistant.App
+import com.google.android.material.snackbar.Snackbar
 import com.yuriysurzhikov.gidassistant.R
 import com.yuriysurzhikov.gidassistant.ui.onboarding.OnBoardingFragment
 import com.yuriysurzhikov.gidassistant.databinding.FragmentOnboardingPermissionsBinding
@@ -20,10 +18,7 @@ import com.yuriysurzhikov.gidassistant.ui.onboarding.OnBoardingActivity
 import com.yuriysurzhikov.gidassistant.utils.CommonUtils
 import com.yuriysurzhikov.gidassistant.utils.permissions.IPermissionsCallback
 import com.yuriysurzhikov.gidassistant.utils.permissions.IPermissionsProvider
-import com.yuriysurzhikov.gidassistant.utils.permissions.PermissionsProvider
-import com.yuriysurzhikov.gidassistant.utils.permissions.PermissionsType
 import com.yuriysurzhikov.gidassistant.utils.permissions.PermissionsType.LocationPermissions
-import java.security.Permission
 
 class PermissionsOnBoardingFragment :
     OnBoardingFragment(), IPermissionsProvider<LocationPermissions> {
@@ -43,7 +38,7 @@ class PermissionsOnBoardingFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.permssionsImage.setOnClickListener {
+        binding.providePermissions.setOnClickListener {
             requestPermissions()
         }
     }
@@ -60,11 +55,18 @@ class PermissionsOnBoardingFragment :
 
         override fun onDecline(type: LocationPermissions) {
             LocationPermissions.showDeclinedMessage()
-            val appSettingsIntent = Intent(
-                Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                Uri.parse("package:${CommonUtils.getResourcePackageName(context)}")
+            Snackbar.make(
+                requireView(),
+                R.string.location_permissions_declined,
+                Snackbar.LENGTH_LONG
             )
-            startActivityForResult(appSettingsIntent, type.requestCode)
+                .setAction(R.string.permissions_provide) {
+                    val appSettingsIntent = Intent(
+                        Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                        Uri.parse("package:${CommonUtils.getResourcePackageName(context)}")
+                    )
+                    startActivityForResult(appSettingsIntent, type.requestCode)
+                }
         }
     }
 

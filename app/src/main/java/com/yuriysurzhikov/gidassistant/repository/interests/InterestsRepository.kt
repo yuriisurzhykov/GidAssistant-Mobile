@@ -23,6 +23,7 @@ constructor(
             val resultForShowing = interestsRemoteEntityMapper.mapListToEntity(resultFromServer)
             resultForShowing
         } catch (e: Exception) {
+            e.printStackTrace()
             emptyList()
         }
     }
@@ -40,9 +41,9 @@ constructor(
         try {
             interestsDao.saveAll(interestsCacheMapper.mapListFromEntity(interests))
         } catch (ex: Exception) {
-
+            ex.printStackTrace()
         } catch (thr: Throwable) {
-
+            thr.printStackTrace()
         }
     }
     suspend fun deleteAll() {

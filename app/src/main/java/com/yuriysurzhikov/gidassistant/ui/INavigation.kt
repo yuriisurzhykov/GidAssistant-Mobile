@@ -6,5 +6,5 @@ interface INavigation {
 
     fun onBackStackChange()
     fun clearCurrentFromStack()
-    fun openFragment(fragment: Fragment, tag: String?)
+    fun showFragment(fragment: Fragment, tag: String?)
 }

@@ -12,7 +12,7 @@ import com.yuriysurzhikov.gidassistant.utils.CommonUtils
 sealed class PermissionsType(val permissions: Array<String>,
                              val requestCode: Int) {
 
-    object LocationPermissions: PermissionsType(arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION), 100) {
+    object LocationPermissions: PermissionsType(arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION), 100) {
         override fun showGrantedMessage() {
             Toast.makeText(App.instance?.applicationContext, App.instance?.applicationContext?.resources?.getString(
                 R.string.location_permissions_granted), Toast.LENGTH_LONG).show()

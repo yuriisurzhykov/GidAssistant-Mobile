@@ -3,20 +3,26 @@ package com.yuriysurzhikov.gidassistant.repository.places.remote
 import com.yuriysurzhikov.gidassistant.model.Place
 import com.yuriysurzhikov.gidassistant.repository.places.remote.PlaceRetrofitEntity
 import com.yuriysurzhikov.gidassistant.utils.EntityMapper
+import java.lang.Exception
 import javax.inject.Inject
 
 class PlacesRemoteEntityMapper @Inject constructor(): EntityMapper<Place, PlaceRetrofitEntity> {
 
     override fun mapFromEntity(entity: Place): PlaceRetrofitEntity {
-        return PlaceRetrofitEntity(
-            "",
-            entity.name,
-            entity.description,
-            entity.googleUrl,
-            entity.photoUrl,
-            entity.latitude,
-            entity.longitude
-        )
+        return try {
+            PlaceRetrofitEntity(
+                "",
+                entity.name!!,
+                entity.description!!,
+                entity.googleUrl!!,
+                entity.photoUrl!!,
+                entity.latitude,
+                entity.longitude
+            )
+        } catch (e: Exception) {
+            e.printStackTrace()
+            PlaceRetrofitEntity("", "", "", "", "", 0.0, 0.0)
+        }
     }
 
     override fun mapToEntity(domainModel: PlaceRetrofitEntity): Place {

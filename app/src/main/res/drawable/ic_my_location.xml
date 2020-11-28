@@ -1,0 +1,12 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="40dp"
+    android:height="40dp"
+    android:viewportWidth="51"
+    android:viewportHeight="51">
+    <path
+        android:fillColor="@color/gidassistant_blue_light"
+        android:pathData="M25.5,25.5m-25.5,0a25.5,25.5 0,1 1,51 0a25.5,25.5 0,1 1,-51 0" />
+    <path
+        android:fillColor="@color/gidassistant_primary"
+        android:pathData="M25,25m-20,0a20,20 0,1 1,40 0a20,20 0,1 1,-40 0" />
+</vector>

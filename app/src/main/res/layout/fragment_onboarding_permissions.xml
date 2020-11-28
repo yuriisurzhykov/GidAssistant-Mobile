@@ -46,16 +46,18 @@
             app:layout_constraintBottom_toBottomOf="parent"
             onboadring:src="@{image}"/>
 
-        <!--<Button
+        <Button
             android:id="@+id/provide_permissions"
-            style="@style/Widget.GidAssistant.Button"
-            android:layout_width="wrap_content"
+            android:background="@drawable/rounded_button"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/onboarding_margin_top"
+            android:layout_marginBottom="@dimen/default_padding"
+            android:layout_marginStart="@dimen/large_margin"
+            android:layout_marginEnd="@dimen/large_margin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="@string/permissions_provide"/>-->
+            android:text="@string/permissions_provide"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

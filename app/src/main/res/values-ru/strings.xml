@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GidAssistant-Mobile</string>
+    <string name="routes">Пути</string>
+    <string name="best_routes">Подходящие</string>
+    <string name="account">Профиль</string>
+    <string name="interests_fragment">Интересы</string>
+    <string name="next_button">Далее</string>
+    <string name="skip_button">Пропустить</string>
+    <string name="welcome_title">Добро пожаловать в GidAssistant!</string>
+    <string name="finish_button">Завершить</string>
+    <string name="interests_title">Выберите интересы</string>
+    <string name="permissions_title">Нам необходимо разрешения на получение данных о месторасположению</string>
+    <string name="permissions_subtitle">Кликните на экран, чтобы предоставить разрешения</string>
+    <string name="permissions_provide">Предоставить</string>
+    <string name="start_input">Начните вводить...</string>
+    <string name="location_permissions_granted">Разрешения предоставлены, спасибо!</string>
+    <string name="location_permissions_declined">Разрешения не предоставлены!</string>
+    <string name="read_storage_granted">Разрешения предоставлены, спасибо!</string>
+    <string name="read_storage_declined">Разрешения не предоставлены!</string>
+    <string name="write_storage_granted">Разрешения предоставлены, спасибо!</string>
+    <string name="write_storage_declined">Разрешения не предоставлены!</string>
+    <string name="interests_counter">Вы выбрали</string>
+    <string name="items">элементов</string>
+    <string name="best">Подходящее</string>
+    <string name="profile">Профиль</string>
+    <string name="click_to_open_interests">Нажмите, чтобы открыть окно интересов</string>
+    <string name="create_route">Построить маршрут</string>
+    <string name="select_place_for_route">Выберите места для маршрута</string>
+    <string name="your_interests">Ваши интересы</string>
+    <string name="can_be_added">Вы можете добавить эти интересы</string>
+    <string name="save">Сохранить изменения</string>
+    <string name="cancel">Отменить изменения</string>
+    <string name="cannot_create_route">Невозможно построить маршрут!</string>
+</resources>

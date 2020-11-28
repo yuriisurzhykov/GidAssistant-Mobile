@@ -30,8 +30,10 @@ constructor(
             }
             emit(DataState.Success(placesRemoteEntityMapper.mapListToEntity(relatedPlaces)))
         } catch (ex: Exception) {
+            ex.printStackTrace()
             emit(DataState.Error(ex))
         } catch (thr: Throwable) {
+            thr.printStackTrace()
             emit(DataState.Error(thr))
         }
     }

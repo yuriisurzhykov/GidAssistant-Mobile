@@ -62,7 +62,7 @@ constructor(
                 _userInterests.set(interestsRepository.getSavedInterests())
                 _remoteInterests.set(interestsRepository.getRemoteInterests())
             } catch (e: Exception) {
-
+                e.printStackTrace()
             } finally {
                 loading.set(false)
             }

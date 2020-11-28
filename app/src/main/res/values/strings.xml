@@ -16,8 +16,8 @@
     <string name="start_input">Start input…</string>
     <string name="location_permissions_granted">Location permissions was granted!</string>
     <string name="location_permissions_declined">Location permissions was declined!</string>
-    <string name="read_storage_granted">Location permissions was granted!</string>
-    <string name="read_storage_declined">Location permissions was declined!</string>
+    <string name="read_storage_granted">Permissions for read storage was granted!</string>
+    <string name="read_storage_declined">Permissions for read storage was declined!</string>
     <string name="write_storage_granted">Location permissions was granted!</string>
     <string name="write_storage_declined">Location permissions was declined!</string>
     <string name="interests_counter">You select</string>
@@ -31,4 +31,5 @@
     <string name="can_be_added">You can add this interests</string>
     <string name="save">Save changes</string>
     <string name="cancel">Cancel changes</string>
+    <string name="cannot_create_route">Cannot create an route!</string>
 </resources>

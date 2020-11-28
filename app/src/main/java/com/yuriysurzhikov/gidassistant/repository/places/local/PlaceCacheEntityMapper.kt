@@ -4,21 +4,31 @@ import com.yuriysurzhikov.gidassistant.model.Place
 import com.yuriysurzhikov.gidassistant.utils.EntityMapper
 import javax.inject.Inject
 
-class PlaceCacheEntityMapper @Inject constructor(): EntityMapper<Place, PlaceCacheEntity> {
+class PlaceCacheEntityMapper @Inject constructor() : EntityMapper<Place, PlaceCacheEntity> {
     override fun mapFromEntity(entity: Place): PlaceCacheEntity {
-        return PlaceCacheEntity(
-            entity.name
-        )
+        return try{
+            PlaceCacheEntity(
+                entity.name!!,
+                entity.description!!,
+                entity.googleUrl!!,
+                entity.photoUrl!!,
+                entity.latitude,
+                entity.longitude
+            )
+        } catch (ex: Exception) {
+            ex.printStackTrace()
+            PlaceCacheEntity("", "", "", "", 0.0, 0.0)
+        }
     }
 
     override fun mapToEntity(domainModel: PlaceCacheEntity): Place {
         return Place(
-            "",
-            "",
-            "",
-            "",
-            0.0,
-            0.0
+            domainModel.name,
+            domainModel.description,
+            domainModel.googleUrl,
+            domainModel.photoUrl,
+            domainModel.latitude,
+            domainModel.longitude
         )
     }
 

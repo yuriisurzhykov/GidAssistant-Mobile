@@ -5,7 +5,6 @@ import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.yuriysurzhikov.gidassistant.model.Place
-import com.yuriysurzhikov.gidassistant.repository.interests.InterestsRepository
 import com.yuriysurzhikov.gidassistant.repository.places.PlacesRepository
 import com.yuriysurzhikov.gidassistant.utils.DataState
 import kotlinx.coroutines.CoroutineScope
@@ -25,9 +24,11 @@ constructor(
     val loading = ObservableBoolean(false)
     val places: LiveData<List<Place>>
         get() = _places
+    val selectedPlaces: List<Place>
+        get() = _selectedPlaces
 
     private val _places = MutableLiveData<List<Place>>()
-    private val selectedPlaces = mutableListOf<Place>()
+    private val _selectedPlaces = mutableListOf<Place>()
 
     fun refresh() {
         loadPlaces()
@@ -35,6 +36,8 @@ constructor(
 
     fun loadPlaces() {
         CoroutineScope(Dispatchers.IO).launch {
+            _selectedPlaces.clear()
+            invalidateSelectedPlaces()
             placesRepository.fetchRelatedPlaces().onEach {
                 when (it) {
                     is DataState.Loading -> {
@@ -52,34 +55,25 @@ constructor(
         }
     }
 
-    fun createRoute() {
-        loading.set(true)
-        CoroutineScope(Dispatchers.IO).launch {
-            try{
-                Thread.sleep(2000)
-            } catch (e: Exception) {
-
-            } finally {
-                loading.set(false)
-                selectedPlaces.clear()
-                validateRouteButtonVisibility()
-            }
-        }
+    fun selectToRoute(position: Int) {
+        if (!_selectedPlaces.contains(_places.value!![position]))
+            _selectedPlaces.add(_places.value!![position])
+        validateRouteButtonVisibility()
     }
 
-    fun selectToRoute(position: Int) {
-        selectedPlaces.add(_places.value!![position])
+    fun invalidateSelectedPlaces() {
+        _selectedPlaces.clear()
         validateRouteButtonVisibility()
     }
 
     fun deselectFromRoute(position: Int) {
-        selectedPlaces.removeAll {
+        _selectedPlaces.removeAll {
             it == _places.value!![position]
         }
         validateRouteButtonVisibility()
     }
 
     private fun validateRouteButtonVisibility() {
-        canCreateRoute.set(selectedPlaces.isNotEmpty())
+        canCreateRoute.set(_selectedPlaces.isNotEmpty())
     }
 }

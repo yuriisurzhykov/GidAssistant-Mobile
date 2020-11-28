@@ -6,23 +6,23 @@ import com.google.gson.annotations.SerializedName
 data class PlaceRetrofitEntity(
     @SerializedName("id")
     @Expose
-    val id: String,
+    var id: String,
     @SerializedName("name")
     @Expose
-    val name: String,
+    var name: String,
     @SerializedName("description")
     @Expose
-    val description: String,
+    var description: String,
     @SerializedName("googleUrl")
     @Expose
-    val googleUrl: String,
+    var googleUrl: String,
     @SerializedName("photoUrl")
     @Expose
-    val photoUrl: String,
+    var photoUrl: String,
     @SerializedName("latitude")
     @Expose
-    val latitude: Double,
+    var latitude: Double,
     @SerializedName("longitude")
     @Expose
-    val longitude: Double
+    var longitude: Double
 )

@@ -4,15 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.Observable
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.maps.model.PolylineOptions
+import com.yuriysurzhikov.gidassistant.R
 import com.yuriysurzhikov.gidassistant.customviews.placeitem.PlaceRecycler
 import com.yuriysurzhikov.gidassistant.customviews.placeitem.PlaceSelectListener
 import com.yuriysurzhikov.gidassistant.databinding.FragmentBestSuitableBinding
 import com.yuriysurzhikov.gidassistant.model.Place
+import com.yuriysurzhikov.gidassistant.routedrawer.RouteDrawerCallback
 import com.yuriysurzhikov.gidassistant.ui.AbstractFragment
+import com.yuriysurzhikov.gidassistant.ui.route.IRouteOpener
+import com.yuriysurzhikov.gidassistant.ui.route.RouteFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -52,7 +58,8 @@ class BestFragment : AbstractFragment() {
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.adapter = placeAdapter
         viewModel.loadPlaces()
-        viewModel.loading.addOnPropertyChangedCallback(object: Observable.OnPropertyChangedCallback() {
+        viewModel.loading.addOnPropertyChangedCallback(object :
+            Observable.OnPropertyChangedCallback() {
             override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
                 if (!viewModel.loading.get())
                     binding.swipe.isRefreshing = false
@@ -62,7 +69,10 @@ class BestFragment : AbstractFragment() {
             placeAdapter?.update(it)
         })
         binding.createRoute.setOnClickListener {
-            viewModel.createRoute()
+            if (activity is IRouteOpener) {
+                (activity!! as IRouteOpener).openRoute(viewModel.selectedPlaces)
+                viewModel.invalidateSelectedPlaces()
+            }
             placeAdapter?.setCreateRoute()
         }
     }
@@ -70,4 +80,5 @@ class BestFragment : AbstractFragment() {
     override fun refresh() {
         viewModel.refresh()
     }
+
 }
