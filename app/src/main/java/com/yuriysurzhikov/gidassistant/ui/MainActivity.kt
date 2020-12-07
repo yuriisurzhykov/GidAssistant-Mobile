@@ -25,7 +25,7 @@ import com.yuriysurzhikov.gidassistant.utils.CommonUtils
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class AbstractNavigationActivity :
+class MainActivity :
     AppCompatActivity(),
     INavigation,
     NavigationListener,

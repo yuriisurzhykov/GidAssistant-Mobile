@@ -2,7 +2,6 @@ package com.yuriysurzhikov.gidassistant.ui.onboarding
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentStatePagerAdapter
@@ -12,7 +11,7 @@ import com.yuriysurzhikov.gidassistant.ui.onboarding.interests.InterestsOnBoardi
 import com.yuriysurzhikov.gidassistant.ui.onboarding.permissions.PermissionsOnBoardingFragment
 import com.yuriysurzhikov.gidassistant.ui.onboarding.welcome.WelcomeOnBoardingFragment
 import com.yuriysurzhikov.gidassistant.databinding.ActivityOnboardingBinding
-import com.yuriysurzhikov.gidassistant.ui.AbstractNavigationActivity
+import com.yuriysurzhikov.gidassistant.ui.MainActivity
 import com.yuriysurzhikov.gidassistant.utils.RunUtils
 import com.yuriysurzhikov.gidassistant.utils.setGone
 import dagger.hilt.android.AndroidEntryPoint
@@ -82,7 +81,7 @@ class OnBoardingActivity: AppCompatActivity() {
 
         override fun onFinishClick() {
             RunUtils.setWasFirstRun(applicationContext)
-            val intent = Intent(applicationContext, AbstractNavigationActivity::class.java)
+            val intent = Intent(applicationContext, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
         }

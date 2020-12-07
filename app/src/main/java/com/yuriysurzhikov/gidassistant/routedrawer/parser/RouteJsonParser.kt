@@ -20,6 +20,7 @@ package com.yuriysurzhikov.gidassistant.routedrawer.parser
 import com.google.gson.GsonBuilder
 
 class RouteJsonParser<T> : RouteParser<T> {
+    @Suppress("UNCHECKED_CAST")
     override suspend fun parse(data: String?, type: Class<T>?): T {
         val gson = GsonBuilder().create()
         return gson.fromJson<Any>(data, type) as T

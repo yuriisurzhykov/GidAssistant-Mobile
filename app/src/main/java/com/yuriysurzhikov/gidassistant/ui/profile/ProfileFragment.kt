@@ -13,7 +13,7 @@ import com.yuriysurzhikov.gidassistant.customviews.interests.InterestsMergeAdapt
 import com.yuriysurzhikov.gidassistant.databinding.FragmentProfileBinding
 import com.yuriysurzhikov.gidassistant.model.Interest
 import com.yuriysurzhikov.gidassistant.ui.AbstractFragment
-import com.yuriysurzhikov.gidassistant.ui.AbstractNavigationActivity
+import com.yuriysurzhikov.gidassistant.ui.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -57,8 +57,8 @@ class ProfileFragment: AbstractFragment() {
         viewModel.wasSaved.addOnPropertyChangedCallback(object: Observable.OnPropertyChangedCallback() {
             override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
                 if(viewModel.wasSaved.get()) {
-                    if(activity is AbstractNavigationActivity)
-                        (activity as AbstractNavigationActivity).onNavigationChanged(0)
+                    if(activity is MainActivity)
+                        (activity as MainActivity).onNavigationChanged(0)
                 }
             }
         })

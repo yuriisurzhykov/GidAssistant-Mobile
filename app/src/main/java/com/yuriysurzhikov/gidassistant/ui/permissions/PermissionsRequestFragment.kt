@@ -8,14 +8,12 @@ import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import com.yuriysurzhikov.gidassistant.R
 import com.yuriysurzhikov.gidassistant.databinding.FragmentPermissionsRequestBinding
 import com.yuriysurzhikov.gidassistant.ui.AbstractFragment
-import com.yuriysurzhikov.gidassistant.ui.AbstractNavigationActivity
+import com.yuriysurzhikov.gidassistant.ui.MainActivity
 import com.yuriysurzhikov.gidassistant.utils.CommonUtils
 import com.yuriysurzhikov.gidassistant.utils.permissions.IPermissionsCallback
 import com.yuriysurzhikov.gidassistant.utils.permissions.IPermissionsProvider
@@ -82,7 +80,7 @@ class PermissionsRequestFragment : AbstractFragment(),
         IPermissionsCallback<PermissionsType.LocationPermissions> {
         override fun onGranted(type: PermissionsType.LocationPermissions) {
             PermissionsType.LocationPermissions.showGrantedMessage()
-            (activity as AbstractNavigationActivity).launchMainApplication()
+            (activity as MainActivity).launchMainApplication()
         }
 
         override fun onDecline(type: PermissionsType.LocationPermissions) {
